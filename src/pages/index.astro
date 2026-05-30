@@ -3,7 +3,6 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import { SITE, BOOK } from '../config/site';
-import actionStory from '../assets/alassane-action-1.jpg';
 import livreCover from '../assets/livre-cover.jpg';
 import VideoEmbed from '../components/VideoEmbed.astro';
 
@@ -158,8 +157,7 @@ const schema = {
     <div class="container-site grid items-center gap-12 lg:grid-cols-2">
       <div class="order-2 lg:order-1">
         <p class="eyebrow">Mon histoire</p>
-        <p class="stat-xxl">56 → 88<span class="text-3xl align-top">CM</span></p>
-        <h2 class="mt-2 text-2xl font-normal text-navy sm:text-3xl">Voilà le chemin.</h2>
+        <h2 class="text-3xl font-bold text-navy sm:text-4xl">Voilà le chemin.</h2>
         <blockquote class="mt-6 border-l-4 border-gold pl-5 text-lg italic text-navy/80">
           « J'avais 14 ans. Moins d'1m60. On m'a dit que j'avais pas le profil.
           Alors j'ai décidé de prouver le contraire. »
@@ -174,15 +172,14 @@ const schema = {
         </a>
       </div>
 
+      <!-- Bloc typographique (statement) au lieu d'une photo. -->
       <div class="order-1 lg:order-2">
-        <div class="media-treated aspect-[4/5] w-full rounded-2xl shadow-xl shadow-navy/20">
-          <Image
-            src={actionStory}
-            alt="Alassane démontrant un exercice de détente lors d'une séance de coaching en extérieur"
-            widths={[400, 700, 1000]}
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            loading="lazy"
-          />
+        <div class="rounded-2xl bg-navy p-10 text-center text-white shadow-xl shadow-navy/20">
+          <p class="stat-xxl">56 → 88</p>
+          <p class="mt-3 text-xl uppercase tracking-[0.2em] text-cream/80">cm de détente</p>
+          <p class="mt-5 inline-block rounded-full bg-gold/15 px-4 py-1.5 font-semibold text-gold">
+            +32 cm en 4 ans
+          </p>
         </div>
       </div>
     </div>
