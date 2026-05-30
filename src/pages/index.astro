@@ -6,6 +6,7 @@ import { SITE, BOOK } from '../config/site';
 import actionHero from '../assets/alassane-action-2.jpg';
 import actionStory from '../assets/alassane-action-1.jpg';
 import livreCover from '../assets/livre-cover.jpg';
+import VideoEmbed from '../components/VideoEmbed.astro';
 
 const schema = {
   '@context': 'https://schema.org',
@@ -190,6 +191,25 @@ const schema = {
             loading="lazy"
           />
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EN VIDÉO ===================== -->
+  <section class="chevrons-navy py-20 text-white">
+    <div class="container-site max-w-4xl text-center">
+      <p class="eyebrow">En vidéo</p>
+      <h2 class="display-section">Regarde, plutôt que de lire.</h2>
+      <p class="mx-auto mt-4 max-w-xl text-cream/80">
+        Une démonstration vaut mille mots. Découvre la méthode en mouvement.
+      </p>
+      <div class="mt-10">
+        {/* TODO: remplace youtubeId par l'ID de ta vidéo YouTube (ex. "a1B2c3D4").
+            Tant qu'il est vide, un cadre « bientôt disponible » s'affiche. */}
+        <VideoEmbed
+          title="Présentation — Alassane Coaching"
+          youtubeId={undefined}
+        />
       </div>
     </div>
   </section>
