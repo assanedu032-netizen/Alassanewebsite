@@ -3,7 +3,6 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import { SITE, BOOK } from '../config/site';
-import actionHero from '../assets/alassane-action-2.jpg';
 import actionStory from '../assets/alassane-action-1.jpg';
 import livreCover from '../assets/livre-cover.jpg';
 import VideoEmbed from '../components/VideoEmbed.astro';
@@ -23,18 +22,12 @@ const schema = {
   schema={schema}
 >
   <!-- ===================== HERO ===================== -->
-  <section class="relative flex min-h-[88vh] items-center overflow-hidden bg-navy text-white">
-    <div class="absolute inset-0">
-      <Image
-        src={actionHero}
-        alt="Alassane en posture explosive lors d'un entraînement en extérieur"
-        class="img-cine h-full w-full object-cover object-top"
-        widths={[640, 1024, 1600]}
-        sizes="100vw"
-        loading="eager"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/75 to-navy/30"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/40 to-transparent"></div>
+  <section class="relative flex min-h-[78vh] items-center overflow-hidden bg-gradient-to-b from-navy-light via-navy to-navy-dark text-white">
+    <!-- Halo doré subtil pour la profondeur (sans photo). -->
+    <div
+      class="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-gold/10 blur-3xl"
+      aria-hidden="true"
+    >
     </div>
 
     <div class="container-site relative py-24">
@@ -111,7 +104,7 @@ const schema = {
   </section>
 
   <!-- ===================== BRIDGE — LE SYSTÈME ===================== -->
-  <section class="chevrons-navy py-20 text-white">
+  <section class="bg-navy py-20 text-white">
     <div class="container-site grid items-center gap-12 lg:grid-cols-2">
       <div>
         <p class="eyebrow">Le système complet</p>
@@ -196,7 +189,7 @@ const schema = {
   </section>
 
   <!-- ===================== EN VIDÉO ===================== -->
-  <section class="chevrons-navy py-20 text-white">
+  <section class="bg-navy py-20 text-white">
     <div class="container-site max-w-4xl text-center">
       <p class="eyebrow">En vidéo</p>
       <h2 class="display-section">Regarde, plutôt que de lire.</h2>

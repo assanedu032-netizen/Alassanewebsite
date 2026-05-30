@@ -117,18 +117,6 @@
     @apply mb-3 inline-block text-sm font-semibold uppercase tracking-[0.18em] text-gold;
   }
 
-  /*
-    Fond navy avec motif de chevrons dorés subtils — rappel visuel de la
-    couverture du livre. Le motif est baké en SVG (opacité faible) et
-    s'estompe vers le bas via un masque pour rester discret.
-  */
-  .chevrons-navy {
-    background-color: var(--color-navy);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='20' viewBox='0 0 60 20'%3E%3Cpath d='M0 20 L30 5 L60 20' fill='none' stroke='%23c5a44e' stroke-width='1.4' stroke-opacity='0.32'/%3E%3C/svg%3E");
-    background-size: 84px 28px;
-    background-position: center top;
-  }
-
   /* ===== Typo XXL / statements ===== */
 
   /* Titre hero géant, fluide selon l'écran. */
