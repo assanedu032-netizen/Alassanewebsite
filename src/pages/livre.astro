@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { BOOK, PROGRAMS } from '../config/site';
 import livreMockup from '../assets/livre-mockup.png';
 import livreCover from '../assets/livre-cover.jpg';
+import actionConstat from '../assets/alassane-action-2.jpg';
 
 const schema = {
   '@context': 'https://schema.org',
@@ -64,23 +65,35 @@ const parts = [
 >
   <!-- ===================== BEFORE ===================== -->
   <section class="bg-navy py-20 text-white">
-    <div class="container-site max-w-3xl">
-      <p class="eyebrow">Le constat</p>
-      <h1 class="display-section">
-        Tu t'entraînes depuis des mois. Ta détente est au même point.
-      </h1>
-      <p class="mt-6 text-xl font-semibold text-gold">
-        Ce n'est pas normal. Et ce n'est pas ta faute.
-      </p>
-      <p class="mt-5 leading-relaxed text-cream/85">
-        Tu regardes des vidéos. Tu essaies un programme. Deux semaines. Rien. Tu en
-        cherches un autre. Même résultat. Et une pensée s'installe :
-        « C'est peut-être génétique. C'est peut-être pas pour moi. »
-      </p>
-      <p class="mt-5 leading-relaxed text-cream/85">
-        Non. Le problème, c'est que tu travailles <strong class="text-white">sans système</strong>.
-        Et sans système, même les meilleurs exercices donnent des résultats aléatoires.
-      </p>
+    <div class="container-site grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <p class="eyebrow">Le constat</p>
+        <h1 class="display-section">
+          Tu t'entraînes depuis des mois. Ta détente est au même point&nbsp;?
+        </h1>
+        <p class="mt-6 text-xl font-semibold text-gold">
+          Ce n'est pas normal. Et ce n'est pas ta faute.
+        </p>
+        <p class="mt-5 leading-relaxed text-cream/85">
+          Tu regardes des vidéos. Tu essaies un programme. Deux semaines. Rien. Tu en
+          cherches un autre. Même résultat. Et une pensée s'installe :
+          « C'est peut-être génétique. C'est peut-être pas pour moi. »
+        </p>
+        <p class="mt-5 leading-relaxed text-cream/85">
+          Non. Le problème, c'est que tu travailles <strong class="text-white">sans système</strong>.
+          Et sans système, même les meilleurs exercices donnent des résultats aléatoires.
+        </p>
+      </div>
+      <div>
+        <Image
+          src={actionConstat}
+          alt="Alassane en plein effort lors d'un entraînement explosif en extérieur"
+          class="aspect-[4/5] w-full rounded-2xl object-cover shadow-2xl shadow-black/40 ring-1 ring-gold/20"
+          widths={[400, 700, 1000]}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          loading="lazy"
+        />
+      </div>
     </div>
   </section>
 
