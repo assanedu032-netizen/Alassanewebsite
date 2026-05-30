@@ -22,30 +22,31 @@ const schema = {
   schema={schema}
 >
   <!-- ===================== HERO ===================== -->
-  <section class="relative overflow-hidden bg-navy text-white">
+  <section class="relative flex min-h-[88vh] items-center overflow-hidden bg-navy text-white">
     <div class="absolute inset-0">
       <Image
         src={actionHero}
         alt="Alassane en posture explosive lors d'un entraînement en extérieur"
-        class="h-full w-full object-cover object-top opacity-25"
+        class="img-cine h-full w-full object-cover object-top"
         widths={[640, 1024, 1600]}
         sizes="100vw"
         loading="eager"
       />
-      <div class="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/60"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/75 to-navy/30"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/40 to-transparent"></div>
     </div>
 
-    <div class="container-site relative grid gap-10 py-20 lg:grid-cols-2 lg:py-28">
-      <div class="max-w-xl">
-        <h1 class="text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-6xl">
-          Un athlète explosif, ça ne naît pas.
-          <span class="text-gold"> Ça se construit.</span>
+    <div class="container-site relative py-24">
+      <div class="max-w-4xl">
+        <h1 class="display-hero">
+          Un athlète explosif,<br />ça ne naît pas.
+          <span class="text-gold">Ça se construit.</span>
         </h1>
-        <p class="mt-6 text-lg leading-relaxed text-cream/85">
+        <p class="mt-8 max-w-xl text-lg leading-relaxed text-cream/85">
           Voici ce que j'ai appris en passant de <strong class="text-white">56 cm à 88 cm</strong> de détente.
           Pas en un mois. En 4 ans. Avec beaucoup d'erreurs entre les deux.
         </p>
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
           <a href="/livre" class="btn-gold">Découvrir le livre →</a>
           <button type="button" data-open-quiz class="btn-outline">
             Trouver mon programme →
@@ -163,9 +164,8 @@ const schema = {
     <div class="container-site grid items-center gap-12 lg:grid-cols-2">
       <div class="order-2 lg:order-1">
         <p class="eyebrow">Mon histoire</p>
-        <h2 class="text-3xl font-bold text-navy sm:text-4xl">
-          56 cm → 88 cm. Voilà le chemin.
-        </h2>
+        <p class="stat-xxl">56 → 88<span class="text-3xl align-top">CM</span></p>
+        <h2 class="mt-2 text-2xl font-normal text-navy sm:text-3xl">Voilà le chemin.</h2>
         <blockquote class="mt-6 border-l-4 border-gold pl-5 text-lg italic text-navy/80">
           « J'avais 14 ans. Moins d'1m60. On m'a dit que j'avais pas le profil.
           Alors j'ai décidé de prouver le contraire. »
@@ -181,14 +181,15 @@ const schema = {
       </div>
 
       <div class="order-1 lg:order-2">
-        <Image
-          src={actionStory}
-          alt="Alassane démontrant un exercice de détente lors d'une séance de coaching en extérieur"
-          class="aspect-[4/5] w-full rounded-2xl object-cover shadow-xl shadow-navy/20"
-          widths={[400, 700, 1000]}
-          sizes="(max-width: 1024px) 100vw, 50vw"
-          loading="lazy"
-        />
+        <div class="media-treated aspect-[4/5] w-full rounded-2xl shadow-xl shadow-navy/20">
+          <Image
+            src={actionStory}
+            alt="Alassane démontrant un exercice de détente lors d'une séance de coaching en extérieur"
+            widths={[400, 700, 1000]}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
   </section>
