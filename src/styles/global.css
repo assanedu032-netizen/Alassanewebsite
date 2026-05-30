@@ -45,8 +45,9 @@
   h3,
   h4 {
     font-family: var(--font-heading);
-    line-height: 0.96;
-    letter-spacing: 0.01em;
+    line-height: 1.04;
+    letter-spacing: 0.015em;
+    word-spacing: 0.06em;
     font-weight: 600;
   }
 
@@ -123,14 +124,15 @@
   /* Titre hero géant, fluide selon l'écran. */
   .display-hero {
     font-size: clamp(3rem, 8.5vw, 6.5rem);
-    line-height: 0.9;
-    letter-spacing: 0.005em;
+    line-height: 1.0;
+    letter-spacing: 0.02em;
+    word-spacing: 0.06em;
   }
 
   /* Grand titre de section. */
   .display-section {
     font-size: clamp(2.5rem, 6vw, 5rem);
-    line-height: 0.92;
+    line-height: 1.02;
   }
 
   /* Chiffre/statement géant (ex. « 56 → 88 CM »). */

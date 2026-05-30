@@ -4,6 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import { SITE, BOOK } from '../config/site';
 import livreCover from '../assets/livre-cover.jpg';
+import courtNight from '../assets/court-night.jpg';
+import squatDay from '../assets/squat-day.jpg';
 import VideoEmbed from '../components/VideoEmbed.astro';
 
 const schema = {
@@ -44,6 +46,40 @@ const schema = {
           <button type="button" data-open-quiz class="btn-outline">
             Trouver mon programme →
           </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BANDE CINÉMATIQUE (terrain) ===================== -->
+  <section class="relative bg-navy">
+    <div class="relative h-[58vh] min-h-[420px] w-full overflow-hidden">
+      <Image
+        src={courtNight}
+        alt="Alassane sur un terrain de basket en soirée, en plein coaching"
+        class="absolute inset-0 h-full w-full object-cover object-center"
+        widths={[640, 1024, 1440]}
+        sizes="100vw"
+        loading="lazy"
+      />
+      <!-- Dégradés : fond le haut et le bas dans le navy (transition propre). -->
+      <div class="absolute inset-0 bg-gradient-to-b from-navy via-navy/15 to-navy"></div>
+
+      <!-- Badges chiffres réels (façon Garage Strength). -->
+      <div class="absolute inset-x-0 bottom-0">
+        <div class="container-site flex flex-wrap items-end justify-center gap-x-12 gap-y-6 pb-10 text-center text-white sm:gap-x-20">
+          <div>
+            <p class="font-[var(--font-heading)] text-4xl italic text-gold sm:text-5xl">900+</p>
+            <p class="mt-1 text-xs uppercase tracking-[0.18em] text-cream/80">athlètes testés</p>
+          </div>
+          <div>
+            <p class="font-[var(--font-heading)] text-4xl italic text-gold sm:text-5xl">+32 cm</p>
+            <p class="mt-1 text-xs uppercase tracking-[0.18em] text-cream/80">de détente gagnés</p>
+          </div>
+          <div>
+            <p class="font-[var(--font-heading)] text-4xl italic text-gold sm:text-5xl">10 000 €</p>
+            <p class="mt-1 text-xs uppercase tracking-[0.18em] text-cream/80">investis pour comprendre</p>
+          </div>
         </div>
       </div>
     </div>
@@ -172,15 +208,15 @@ const schema = {
         </a>
       </div>
 
-      <!-- Bloc typographique (statement) au lieu d'une photo. -->
       <div class="order-1 lg:order-2">
-        <div class="rounded-2xl bg-navy p-10 text-center text-white shadow-xl shadow-navy/20">
-          <p class="stat-xxl">56 → 88</p>
-          <p class="mt-3 text-xl uppercase tracking-[0.2em] text-cream/80">cm de détente</p>
-          <p class="mt-5 inline-block rounded-full bg-gold/15 px-4 py-1.5 font-semibold text-gold">
-            +32 cm en 4 ans
-          </p>
-        </div>
+        <Image
+          src={squatDay}
+          alt="Alassane à l'entraînement, squat explosif en extérieur"
+          class="aspect-[4/5] w-full rounded-2xl object-cover shadow-xl shadow-navy/20 ring-1 ring-navy/10"
+          widths={[400, 700, 1000]}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          loading="lazy"
+        />
       </div>
     </div>
   </section>
