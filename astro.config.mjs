@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 // Site URL — utilisé pour le sitemap, les balises canoniques et Open Graph.
 // TODO: remplacer par le domaine final une fois Netlify configuré.
 export default defineConfig({
-  site: 'https://alassane-coaching.netlify.app',
+  site: 'https://aquamarine-sfogliatella-c50b7e.netlify.app',
   integrations: [react(), sitemap()],
   vite: {
     plugins: [tailwindcss()],

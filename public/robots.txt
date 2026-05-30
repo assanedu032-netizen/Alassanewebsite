@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alassane-coaching.netlify.app/sitemap-index.xml
+Sitemap: https://aquamarine-sfogliatella-c50b7e.netlify.app/sitemap-index.xml

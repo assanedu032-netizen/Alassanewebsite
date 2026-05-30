@@ -9,7 +9,7 @@ export const SITE = {
   baseline: 'Coach en performance athlétique',
   description:
     "Les Secrets de la Détente Verticale : le livre et l'application Athletik Hub pour comprendre la science de l'explosivité et construire une vraie détente verticale.",
-  url: 'https://alassane-coaching.netlify.app',
+  url: 'https://aquamarine-sfogliatella-c50b7e.netlify.app',
   locale: 'fr_FR',
   author: 'Alassane',
 } as const;
