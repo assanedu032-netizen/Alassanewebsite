@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+/*
+  Page /blog — EN CONSTRUCTION côté public (CLAUDE.md §7).
+  On affiche uniquement le message d'attente. Aucun faux article visible.
+
+  La structure technique est prête : dès qu'un vrai article (non draft) sera
+  ajouté dans src/content/blog/, on pourra activer la liste ci-dessous.
+
+  Idées d'articles gardées en backlog (NON publiées) :
+  - « Les 5 exercices que j'utilise dans tous mes programmes »
+  - « La triple extension, clé de ta détente »
+  - « J'ai testé Air Alert : mon avis honnête »
+  - « Combien de temps pour gagner 10 cm ? »
+  - « Squats vs pliométrie »
+*/
+---
+
+<BaseLayout
+  title="Blog"
+  description="Le blog Alassane Coaching arrive bientôt : des articles basés sur l'expérience terrain, pas sur des théories récupérées en ligne."
+  showQuiz={false}
+>
+  <section class="bg-navy py-28 text-white">
+    <div class="container-site max-w-2xl text-center">
+      <span class="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-navy-light/50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+        En construction
+      </span>
+      <h1 class="text-4xl font-bold sm:text-5xl">Le blog arrive bientôt.</h1>
+      <p class="mt-6 text-lg leading-relaxed text-cream/85">
+        Des articles basés sur l'expérience terrain — pas sur des théories récupérées
+        en ligne. Reviens vite.
+      </p>
+      <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href="/livre" class="btn-gold">Découvrir le livre →</a>
+        <a href="/a-propos" class="btn-outline">Mon histoire →</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

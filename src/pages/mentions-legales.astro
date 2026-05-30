@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Mentions légales"
+  description="Mentions légales du site Alassane Coaching."
+  showQuiz={false}
+>
+  <section class="bg-white py-16">
+    <div class="container-site max-w-2xl">
+      <h1 class="text-3xl font-bold text-navy sm:text-4xl">Mentions légales</h1>
+
+      <div class="mt-8 space-y-8 text-navy/80">
+        <div>
+          <h2 class="font-[var(--font-heading)] text-xl font-bold text-navy">Éditeur du site</h2>
+          <p class="mt-2 text-sm leading-relaxed">
+            Alassane Coaching — Coach en performance athlétique.<br />
+            {/* TODO: raison sociale, statut, SIRET, adresse */}
+            Contact : voir la page <a href="/contact" class="text-gold-dark underline">Contact</a>.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-[var(--font-heading)] text-xl font-bold text-navy">Hébergement</h2>
+          <p class="mt-2 text-sm leading-relaxed">
+            Ce site est hébergé par Netlify, Inc.<br />
+            512 2nd Street, Suite 200, San Francisco, CA 94107, USA.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-[var(--font-heading)] text-xl font-bold text-navy">Propriété intellectuelle</h2>
+          <p class="mt-2 text-sm leading-relaxed">
+            L'ensemble des contenus (textes, photos, visuels, marque « Alassane Coaching »)
+            est protégé. Toute reproduction sans autorisation est interdite.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-[var(--font-heading)] text-xl font-bold text-navy">Données personnelles</h2>
+          <p class="mt-2 text-sm leading-relaxed">
+            Les informations transmises via le formulaire de contact ou la newsletter sont
+            utilisées uniquement pour te répondre et t'envoyer les communications demandées.
+            {/* TODO: compléter avec la politique RGPD définitive */}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

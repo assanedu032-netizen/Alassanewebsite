@@ -1,0 +1,182 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE, BOOK } from '../../config/site';
+
+/*
+  Template d'article /blog/[slug] — PRÉPARÉ, non publié (CLAUDE.md §7).
+  Tant qu'aucun fichier .md non-draft n'existe dans src/content/blog/,
+  getStaticPaths ne génère aucune page : rien n'est exposé publiquement.
+*/
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => data.draft !== true);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post, posts },
+  }));
+}
+
+const { post, posts } = Astro.props;
+const { Content } = await render(post);
+
+// Articles recommandés : 2 autres articles de la même catégorie (ou les plus récents).
+const recommended = posts
+  .filter((p) => p.id !== post.id)
+  .sort((a, b) => {
+    const sameCat = (p: typeof a) => (p.data.category === post.data.category ? 0 : 1);
+    return sameCat(a) - sameCat(b) || +b.data.date - +a.data.date;
+  })
+  .slice(0, 2);
+
+const formattedDate = post.data.date.toLocaleDateString('fr-FR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date.toISOString(),
+  author: { '@type': 'Person', name: SITE.author },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  articleSection: post.data.category,
+  url: `${SITE.url}/blog/${post.id}`,
+};
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  schema={schema}
+  showQuiz={false}
+>
+  <article class="bg-white pb-20">
+    <!-- En-tête -->
+    <header class="bg-navy py-16 text-white">
+      <div class="container-site max-w-3xl">
+        <div class="flex flex-wrap items-center gap-3 text-sm text-cream/70">
+          <span class="rounded-full bg-gold/15 px-3 py-1 font-semibold text-gold">
+            {post.data.category}
+          </span>
+          <time datetime={post.data.date.toISOString()}>{formattedDate}</time>
+          {post.data.readingTime && <span>· {post.data.readingTime} de lecture</span>}
+        </div>
+        <h1 class="mt-5 text-3xl font-bold leading-tight sm:text-4xl">{post.data.title}</h1>
+        <p class="mt-4 text-lg text-cream/85">{post.data.description}</p>
+      </div>
+    </header>
+
+    {
+      post.data.cover && (
+        <div class="container-site -mt-8 max-w-3xl">
+          <Image
+            src={post.data.cover}
+            alt={post.data.coverAlt ?? post.data.title}
+            class="aspect-video w-full rounded-2xl object-cover shadow-xl"
+            widths={[400, 800, 1200]}
+            sizes="(max-width: 768px) 100vw, 768px"
+          />
+        </div>
+      )
+    }
+
+    <!-- Contenu Markdown -->
+    <div class="container-site mt-12 max-w-3xl">
+      <div class="prose-article">
+        <Content />
+      </div>
+
+      <!-- Encart CTA livre -->
+      <aside class="mt-14 rounded-2xl border border-gold/40 bg-cream p-8 text-center">
+        <h2 class="font-[var(--font-heading)] text-2xl font-bold text-navy">
+          {BOOK.title}
+        </h2>
+        <p class="mt-3 text-navy/70">
+          Le système complet pour construire ta détente verticale. {BOOK.pages} pages,
+          {BOOK.programs} programmes et l'app Athletik Hub incluse.
+        </p>
+        <a href="/livre" class="btn-gold mt-6">Découvrir le livre →</a>
+      </aside>
+    </div>
+
+    <!-- Articles recommandés -->
+    {
+      recommended.length > 0 && (
+        <div class="container-site mt-16 max-w-4xl">
+          <h2 class="font-[var(--font-heading)] text-2xl font-bold text-navy">
+            À lire ensuite
+          </h2>
+          <div class="mt-6 grid gap-6 sm:grid-cols-2">
+            {recommended.map((p) => (
+              <a
+                href={`/blog/${p.id}`}
+                class="group rounded-2xl border border-navy/10 p-6 transition-all hover:border-gold hover:shadow-lg"
+              >
+                <span class="text-xs font-semibold uppercase tracking-wide text-gold">
+                  {p.data.category}
+                </span>
+                <h3 class="mt-2 text-lg font-bold text-navy group-hover:text-gold-dark">
+                  {p.data.title}
+                </h3>
+                <p class="mt-2 text-sm text-navy/70">{p.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )
+    }
+  </article>
+</BaseLayout>
+
+<style>
+  /* Styles de contenu d'article (prose maison, sobre, aux couleurs de marque) */
+  .prose-article :global(h2) {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .prose-article :global(h3) {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-article :global(p) {
+    color: color-mix(in srgb, var(--color-navy) 80%, transparent);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+  .prose-article :global(a) {
+    color: var(--color-gold-dark);
+    text-decoration: underline;
+  }
+  .prose-article :global(ul),
+  .prose-article :global(ol) {
+    margin: 1.25rem 0;
+    padding-left: 1.5rem;
+    color: color-mix(in srgb, var(--color-navy) 80%, transparent);
+  }
+  .prose-article :global(li) {
+    margin-bottom: 0.5rem;
+  }
+  .prose-article :global(blockquote) {
+    border-left: 4px solid var(--color-gold);
+    padding-left: 1.25rem;
+    font-style: italic;
+    color: color-mix(in srgb, var(--color-navy) 75%, transparent);
+    margin: 1.5rem 0;
+  }
+  .prose-article :global(img) {
+    border-radius: 1rem;
+    margin: 1.5rem 0;
+  }
+</style>
