@@ -17,8 +17,6 @@ const faq = [
   },
 ];
 
-// Affiche le message de confirmation après redirection Netlify (?success=true)
-const success = Astro.url.searchParams.get('success') === 'true';
 ---
 
 <BaseLayout
@@ -41,16 +39,26 @@ const success = Astro.url.searchParams.get('success') === 'true';
     <div class="container-site grid gap-12 lg:grid-cols-5">
       <!-- Formulaire -->
       <div class="lg:col-span-3">
-        {
-          success && (
-            <div class="mb-6 rounded-xl border border-gold/50 bg-cream p-5">
-              <p class="font-semibold text-navy">Merci, ton message est bien parti ✅</p>
-              <p class="mt-1 text-sm text-navy/70">
-                Je te réponds personnellement sous 24-48h.
-              </p>
-            </div>
-          )
-        }
+        <!--
+          Message de confirmation. Le site étant statique, on ne peut pas lire
+          ?success=true au build : on rend le banner masqué et un script l'affiche
+          après la redirection Netlify (action="/contact?success=true").
+        -->
+        <div id="contact-success" hidden class="mb-6 rounded-xl border border-gold/50 bg-cream p-5">
+          <p class="font-semibold text-navy">Merci, ton message est bien parti ✅</p>
+          <p class="mt-1 text-sm text-navy/70">
+            Je te réponds personnellement sous 24-48h.
+          </p>
+        </div>
+        <script is:inline>
+          if (new URLSearchParams(window.location.search).get('success') === 'true') {
+            const el = document.getElementById('contact-success');
+            if (el) {
+              el.hidden = false;
+              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }
+        </script>
 
         <!--
           Formulaire Netlify Forms.

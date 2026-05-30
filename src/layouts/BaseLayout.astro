@@ -19,7 +19,7 @@ interface Props {
 const {
   title,
   description,
-  ogImage = '/og-default.svg',
+  ogImage = '/og-default.png',
   showQuiz = true,
   schema,
 } = Astro.props;
@@ -70,6 +70,7 @@ const fullTitle =
     {
       schema && (
         <script
+          is:inline
           type="application/ld+json"
           set:html={JSON.stringify(schema)}
         />
@@ -85,13 +86,20 @@ const fullTitle =
     {showQuiz && <QuizPopup client:idle />}
 
     <script>
-      // Tout élément [data-open-quiz] ouvre le popup quiz Athletik Hub.
       document.addEventListener('click', (e) => {
-        const trigger = (e.target as HTMLElement)?.closest('[data-open-quiz]');
+        const target = e.target as HTMLElement;
+
+        // Tout élément [data-open-quiz] ouvre le popup quiz Athletik Hub.
+        const trigger = target?.closest('[data-open-quiz]');
         if (trigger) {
           e.preventDefault();
           window.dispatchEvent(new CustomEvent('open-athletik-quiz'));
+          return;
         }
+
+        // Les liens « Bientôt disponible » (aria-disabled) ne naviguent pas.
+        const disabled = target?.closest('a[aria-disabled="true"]');
+        if (disabled) e.preventDefault();
       });
     </script>
   </body>
