@@ -1,0 +1,201 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { SITE, BOOK } from '../config/site';
+import actionHero from '../assets/alassane-action-2.jpg';
+import actionStory from '../assets/alassane-action-1.jpg';
+import livreCover from '../assets/livre-cover.jpg';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+};
+---
+
+<BaseLayout
+  title={SITE.name}
+  description="Un athlète explosif, ça ne naît pas, ça se construit. Le livre Les Secrets de la Détente Verticale + l'app Athletik Hub : un système complet pour sauter plus haut."
+  schema={schema}
+>
+  <!-- ===================== HERO ===================== -->
+  <section class="relative overflow-hidden bg-navy text-white">
+    <div class="absolute inset-0">
+      <Image
+        src={actionHero}
+        alt="Alassane en posture explosive lors d'un entraînement en extérieur"
+        class="h-full w-full object-cover object-top opacity-25"
+        widths={[640, 1024, 1600]}
+        sizes="100vw"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/60"></div>
+    </div>
+
+    <div class="container-site relative grid gap-10 py-20 lg:grid-cols-2 lg:py-28">
+      <div class="max-w-xl">
+        <h1 class="text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-6xl">
+          Un athlète explosif, ça ne naît pas.
+          <span class="text-gold"> Ça se construit.</span>
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-cream/85">
+          Voici ce que j'ai appris en passant de <strong class="text-white">56 cm à 88 cm</strong> de détente.
+          Pas en un mois. En 4 ans. Avec beaucoup d'erreurs entre les deux.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="/livre" class="btn-gold">Découvrir le livre →</a>
+          <button type="button" data-open-quiz class="btn-outline">
+            Trouver mon programme →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== POURQUOI TU STAGNES ===================== -->
+  <section class="bg-white py-20">
+    <div class="container-site">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="eyebrow">La vraie raison</p>
+        <h2 class="text-3xl font-bold text-navy sm:text-4xl">
+          Pourquoi tu stagnes. Et comment tu arrêtes de stagner.
+        </h2>
+        <p class="mt-4 text-navy/70">
+          Voici les 3 choses qui font la différence entre un athlète qui progresse
+          et un qui tourne en rond.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-8 md:grid-cols-3">
+        {
+          [
+            {
+              n: '1',
+              title: "Tu t'entraînes sans savoir ce que tu développes.",
+              body: "Squats, sauts, pliométrie, dans le désordre. Sans comprendre ce que chaque exercice développe vraiment, tu travailles fort pour des résultats aléatoires.",
+            },
+            {
+              n: '2',
+              title: "Tu n'as pas de structure de périodisation.",
+              body: "Le corps s'adapte — c'est sa force et son problème. Sans progression structurée, il s'adapte au programme et arrête de progresser. C'est pour ça que tu stagnes après 3-4 semaines.",
+            },
+            {
+              n: '3',
+              title: 'Tu ne mesures pas ce qui compte.',
+              body: "Pas juste combien tu sautes : ta force explosive, ta triple extension, ton NPI. Ce que tu ne mesures pas, tu ne peux pas l'améliorer.",
+            },
+          ].map((item) => (
+            <div class="rounded-2xl border border-navy/10 bg-cream/40 p-7">
+              <span class="flex h-11 w-11 items-center justify-center rounded-full bg-navy font-[var(--font-heading)] text-lg font-bold text-gold">
+                {item.n}
+              </span>
+              <h3 class="mt-5 text-lg font-bold text-navy">{item.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-navy/70">{item.body}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-12 text-center">
+        <p class="text-navy/70">
+          Ces 3 points, c'est la base de tout ce que tu trouveras dans le livre.
+        </p>
+        <a href="/livre" class="btn-gold mt-5">Voir le système complet →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BRIDGE — LE SYSTÈME ===================== -->
+  <section class="chevrons-navy py-20 text-white">
+    <div class="container-site grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <p class="eyebrow">Le système complet</p>
+        <h2 class="text-3xl font-bold sm:text-4xl">
+          Un livre. Une app. Un système complet.
+        </h2>
+        <ul class="mt-8 space-y-4">
+          {
+            [
+              `${BOOK.pages} pages de science, de méthodes et de programmes.`,
+              `${BOOK.programs} programmes prêts à l'emploi selon ton profil.`,
+              'Athletik Hub — l\'app pour tracker ta progression en temps réel.',
+            ].map((line) => (
+              <li class="flex items-start gap-3">
+                <svg class="mt-0.5 h-6 w-6 flex-none text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                </svg>
+                <span class="text-cream/90">{line}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-6 text-lg font-semibold text-white">
+          Tout ce qu'il te faut. Dans un seul endroit.
+        </p>
+        <a href="/livre" class="btn-gold mt-7">Obtenir le livre + Athletik Hub →</a>
+      </div>
+
+      <!-- Couverture réelle du livre + app Athletik Hub -->
+      <div class="flex items-end justify-center gap-5">
+        <Image
+          src={livreCover}
+          alt="Couverture du livre Les Secrets de la Détente Verticale"
+          class="w-44 rotate-[-4deg] rounded-lg shadow-2xl shadow-black/40 ring-1 ring-gold/20 sm:w-56"
+          widths={[220, 340, 460]}
+          sizes="(max-width: 640px) 176px, 224px"
+          loading="lazy"
+        />
+        <div class="aspect-[9/16] w-28 rotate-[4deg] rounded-2xl bg-gradient-to-br from-gold/20 to-navy-light p-3 shadow-2xl ring-1 ring-gold/30 sm:w-32">
+          <div class="flex h-full flex-col items-center justify-center text-center">
+            <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gold/20 text-gold">▲</span>
+            <p class="mt-2 text-[10px] font-semibold uppercase tracking-wider text-cream/70">Athletik Hub</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PREUVE / HISTOIRE ===================== -->
+  <section class="bg-cream py-20">
+    <div class="container-site grid items-center gap-12 lg:grid-cols-2">
+      <div class="order-2 lg:order-1">
+        <p class="eyebrow">Mon histoire</p>
+        <h2 class="text-3xl font-bold text-navy sm:text-4xl">
+          56 cm → 88 cm. Voilà le chemin.
+        </h2>
+        <blockquote class="mt-6 border-l-4 border-gold pl-5 text-lg italic text-navy/80">
+          « J'avais 14 ans. Moins d'1m60. On m'a dit que j'avais pas le profil.
+          Alors j'ai décidé de prouver le contraire. »
+        </blockquote>
+        <p class="mt-6 leading-relaxed text-navy/75">
+          4 ans d'entraînement. Des blessures. Plus de 10 000 € investis. Formation
+          privée aux États-Unis avec des coachs NBA et NFL. Certification ISSA.
+          900+ athlètes testés.
+        </p>
+        <a href="/a-propos" class="btn-outline mt-7 !border-navy !text-navy hover:!bg-navy hover:!text-cream">
+          Découvrir mon parcours →
+        </a>
+      </div>
+
+      <div class="order-1 lg:order-2">
+        <Image
+          src={actionStory}
+          alt="Alassane démontrant un exercice de détente lors d'une séance de coaching en extérieur"
+          class="aspect-[4/5] w-full rounded-2xl object-cover shadow-xl shadow-navy/20"
+          widths={[400, 700, 1000]}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEWSLETTER ===================== -->
+  <Newsletter
+    title="Reçois mes conseils sur la détente verticale."
+    subtitle="Des méthodes concrètes, basées sur le terrain. Directement dans ta boîte mail."
+  />
+</BaseLayout>

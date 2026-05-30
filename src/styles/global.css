@@ -1,0 +1,116 @@
+@import 'tailwindcss';
+
+/*
+  Identité de marque Alassane Coaching (FIGÉE — voir CLAUDE.md §4)
+  Couleurs et polices définies UNE SEULE FOIS ici, jamais en dur dans les composants.
+*/
+@theme {
+  /* Couleurs de marque */
+  --color-navy: #1b2a4a;
+  --color-navy-light: #28395f;
+  --color-navy-dark: #131f38;
+  --color-gold: #c5a44e;
+  --color-gold-light: #d6bb73;
+  --color-gold-dark: #a98a3c;
+  --color-cream: #f5f3ee;
+
+  /* Polices */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Police corps : Inter chargée localement via fontsource-like CDN fallback.
+   On reste sobre : Inter en woff2 préchargé dans le <head> du layout. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-navy);
+    background-color: #ffffff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  /* Focus visible accessible et cohérent avec la marque */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  /*
+    Animations d'apparition au scroll (progressive enhancement).
+    Les styles ne s'appliquent QUE si le JS a ajouté .reveal-on sur <html>
+    (script inline dans le <head>) : si le JS échoue, le contenu reste visible.
+    Limité à <main> pour ne pas animer la navbar / le footer.
+  */
+  .reveal-on main :is(.container-site, .reveal) {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.7s cubic-bezier(0.2, 0.6, 0.2, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-on main :is(.container-site, .reveal).is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  /* Respect des préférences d'accessibilité : pas d'animation. */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-on main :is(.container-site, .reveal) {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+}
+
+@layer components {
+  /* Bouton CTA principal — or arrondi */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 font-semibold text-navy transition-all duration-200 hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 active:scale-[0.98];
+  }
+
+  /* Bouton secondaire — contour or sur fond sombre */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-gold px-6 py-3 font-semibold text-gold transition-all duration-200 hover:bg-gold hover:text-navy;
+  }
+
+  /* Bouton désactivé / bientôt disponible */
+  .btn-soon {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-navy-light px-6 py-3 font-semibold text-cream/80 ring-1 ring-inset ring-gold/40 cursor-not-allowed;
+  }
+
+  /* Conteneur de section standard */
+  .container-site {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8;
+  }
+
+  /* Surtitre doré en petites capitales */
+  .eyebrow {
+    @apply mb-3 inline-block text-sm font-semibold uppercase tracking-[0.18em] text-gold;
+  }
+
+  /*
+    Fond navy avec motif de chevrons dorés subtils — rappel visuel de la
+    couverture du livre. Le motif est baké en SVG (opacité faible) et
+    s'estompe vers le bas via un masque pour rester discret.
+  */
+  .chevrons-navy {
+    background-color: var(--color-navy);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='20' viewBox='0 0 60 20'%3E%3Cpath d='M0 20 L30 5 L60 20' fill='none' stroke='%23c5a44e' stroke-width='1.4' stroke-opacity='0.32'/%3E%3C/svg%3E");
+    background-size: 84px 28px;
+    background-position: center top;
+  }
+}

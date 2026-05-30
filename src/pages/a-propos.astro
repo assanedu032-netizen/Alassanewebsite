@@ -1,0 +1,136 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config/site';
+import portrait from '../assets/alassane-portrait.jpg';
+import actionCoaching from '../assets/alassane-action-1.jpg';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Alassane',
+  jobTitle: 'Coach en performance athlétique',
+  description:
+    "Coach en performance athlétique, certifié ISSA, formé aux États-Unis avec des coachs NBA et NFL. Auteur de « Les Secrets de la Détente Verticale ».",
+  url: `${SITE.url}/a-propos`,
+  knowsAbout: ['Détente verticale', 'Pliométrie', 'Préparation physique', 'Explosivité'],
+  hasCredential: 'Certification ISSA',
+};
+
+const stats = [
+  { value: '56 → 88 cm', label: 'de détente' },
+  { value: '10 000 €', label: 'investis en formations' },
+  { value: 'USA', label: 'formé avec des coachs NBA/NFL' },
+  { value: 'ISSA', label: 'certification' },
+  { value: '900+', label: 'athlètes testés' },
+  { value: '378 pages', label: '· 6 programmes' },
+];
+---
+
+<BaseLayout
+  title="À propos"
+  description="J'avais 14 ans, moins d'1m60, et on m'a dit que j'avais pas le profil. 4 ans plus tard : 56 cm → 88 cm de détente. Voici l'histoire derrière Alassane Coaching."
+  schema={schema}
+>
+  <!-- ===================== HOOK ===================== -->
+  <section class="chevrons-navy py-20 text-white">
+    <div class="container-site grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <p class="eyebrow">Mon histoire</p>
+        <h1 class="text-3xl font-bold leading-tight sm:text-4xl lg:text-[2.75rem]">
+          J'avais 14 ans. Moins d'1m60. Et on m'a dit que j'avais pas le profil.
+        </h1>
+        <p class="mt-6 leading-relaxed text-cream/85">
+          Ma première détection au club de Nanterre. Tout le monde faisait plus
+          d'1m90. Moi ? Rien. Je suis rentré chez moi en pleurant de rage.
+        </p>
+        <blockquote class="mt-6 border-l-4 border-gold pl-5 italic text-cream/90">
+          Mon frère m'a dit une phrase qui m'a marqué à vie : « Les gens vraiment forts
+          n'ont pas besoin de détection. Si t'es pas fort là où tu es, tu le seras pas
+          en jouant avec des meilleurs que toi. »
+        </blockquote>
+      </div>
+      <div>
+        <Image
+          src={portrait}
+          alt="Portrait d'Alassane, coach en performance athlétique"
+          class="mx-auto aspect-[3/4] w-full max-w-sm rounded-2xl object-cover shadow-2xl shadow-navy/40 ring-1 ring-gold/20"
+          widths={[400, 600, 900]}
+          sizes="(max-width: 1024px) 100vw, 40vw"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LE PARCOURS ===================== -->
+  <section class="bg-white py-20">
+    <div class="container-site grid items-center gap-12 lg:grid-cols-2">
+      <div class="order-2 lg:order-1">
+        <Image
+          src={actionCoaching}
+          alt="Alassane en plein coaching d'un athlète en extérieur"
+          class="aspect-[4/5] w-full rounded-2xl object-cover shadow-xl shadow-navy/20"
+          widths={[400, 700, 1000]}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          loading="lazy"
+        />
+      </div>
+      <div class="order-1 lg:order-2">
+        <p class="eyebrow">Le parcours</p>
+        <h2 class="text-3xl font-bold text-navy sm:text-4xl">
+          4 ans. Des blessures. Plus de 10 000 €. Et 32 cm de plus.
+        </h2>
+        <p class="mt-6 leading-relaxed text-navy/75">
+          Au début, du matériel basique : une chaise, des escaliers, des sauts en
+          extérieur. Air Alert, une dizaine de programmes trouvés en ligne. Ça m'a
+          aidé. Et ça m'a blessé. Chaque douleur m'a appris quelque chose.
+        </p>
+        <p class="mt-4 leading-relaxed text-navy/75">
+          J'ai investi plus de 10 000 € en formations. Je suis parti aux États-Unis me
+          former en privé avec des coachs NBA et NFL. J'ai obtenu la certification ISSA.
+          Résultat : <strong class="text-navy">56 cm → 88 cm.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LA MISSION ===================== -->
+  <section class="bg-cream py-20">
+    <div class="container-site max-w-3xl">
+      <p class="eyebrow">Pourquoi ce livre</p>
+      <h2 class="text-3xl font-bold text-navy sm:text-4xl">Pourquoi ce livre existe.</h2>
+      <p class="mt-6 leading-relaxed text-navy/80">
+        L'information sur la détente verticale existe — mais elle est éparpillée,
+        contradictoire, mal expliquée. J'ai condensé 10 ans de recherche et de terrain
+        dans un système applicable dès aujourd'hui. Pour que tu n'aies pas à dépenser
+        10 000 € et 4 ans pour comprendre ce qui fonctionne vraiment.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== EN CHIFFRES ===================== -->
+  <section class="chevrons-navy py-20 text-white">
+    <div class="container-site">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow">En chiffres</p>
+        <h2 class="text-3xl font-bold sm:text-4xl">Le parcours en quelques données.</h2>
+      </div>
+      <div class="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3">
+        {
+          stats.map((stat) => (
+            <div class="rounded-2xl border border-white/10 bg-navy-light/40 p-6 text-center">
+              <p class="font-[var(--font-heading)] text-2xl font-bold text-gold sm:text-3xl">
+                {stat.value}
+              </p>
+              <p class="mt-2 text-sm text-cream/70">{stat.label}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="mt-12 text-center">
+        <a href="/livre" class="btn-gold">Voir le livre →</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

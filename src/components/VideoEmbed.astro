@@ -1,0 +1,48 @@
+---
+/*
+  Composant vidéo réutilisable.
+  Les vidéos YouTube ne sont PAS encore prêtes (voir CLAUDE.md §7) :
+  on affiche un emplacement propre « bientôt disponible », jamais de vidéo fictive.
+
+  Quand un lien sera fourni, passer `youtubeId` en prop pour activer l'iframe.
+*/
+interface Props {
+  title?: string;
+  /** ID YouTube. Tant qu'il est vide, on affiche le placeholder. */
+  youtubeId?: string;
+  caption?: string;
+}
+
+const { title = 'Vidéo à venir', youtubeId, caption } = Astro.props;
+---
+
+<figure class="overflow-hidden rounded-2xl bg-navy shadow-xl shadow-navy/20">
+  <div class="relative aspect-video w-full">
+    {
+      youtubeId ? (
+        <iframe
+          class="absolute inset-0 h-full w-full"
+          src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
+          title={title}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        />
+      ) : (
+        <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-navy to-navy-dark text-center">
+          {/* TODO: lien YouTube */}
+          <span class="flex h-16 w-16 items-center justify-center rounded-full bg-gold/15 ring-1 ring-gold/40">
+            <svg class="h-7 w-7 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+          <p class="font-[var(--font-heading)] text-lg font-semibold text-white">
+            {title}
+          </p>
+          <p class="text-sm text-cream/60">Vidéo bientôt disponible</p>
+        </div>
+      )
+    }
+  </div>
+  {caption && <figcaption class="px-5 py-3 text-sm text-cream/70">{caption}</figcaption>}
+</figure>

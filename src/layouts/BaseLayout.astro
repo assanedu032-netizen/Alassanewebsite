@@ -1,0 +1,140 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import QuizPopup from '../components/quiz/QuizPopup.tsx';
+import { SITE } from '../config/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Chemin de l'image OG (dans /public). Par défaut og-default. */
+  ogImage?: string;
+  /** Désactive le popup quiz sur certaines pages si besoin. */
+  showQuiz?: boolean;
+  /** JSON-LD Schema.org à injecter (objet sérialisable). */
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  ogImage = '/og-default.png',
+  showQuiz = true,
+  schema,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const ogImageUrl = new URL(ogImage, SITE.url).href;
+const fullTitle =
+  title === SITE.name ? title : `${title} · ${SITE.name}`;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Active les animations de scroll avant le 1er paint (évite tout flash).
+         Si ce script ne s'exécute pas, le contenu reste visible (sans animation). -->
+    <script is:inline>
+      document.documentElement.classList.add('reveal-on');
+    </script>
+
+    <!-- SEO de base -->
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content={SITE.locale} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Police corps : Inter (les titres restent en Georgia, police système) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    />
+
+    {
+      schema && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify(schema)}
+        />
+      )
+    }
+  </head>
+  <body class="flex min-h-screen flex-col bg-white">
+    <Navbar />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+    {showQuiz && <QuizPopup client:idle />}
+
+    <script>
+      document.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+
+        // Tout élément [data-open-quiz] ouvre le popup quiz Athletik Hub.
+        const trigger = target?.closest('[data-open-quiz]');
+        if (trigger) {
+          e.preventDefault();
+          window.dispatchEvent(new CustomEvent('open-athletik-quiz'));
+          return;
+        }
+
+        // Les liens « Bientôt disponible » (aria-disabled) ne naviguent pas.
+        const disabled = target?.closest('a[aria-disabled="true"]');
+        if (disabled) e.preventDefault();
+      });
+    </script>
+
+    <script>
+      // Reveal au scroll : révèle chaque bloc de section quand il entre dans le viewport.
+      (() => {
+        const targets = document.querySelectorAll('main .container-site, main .reveal');
+        const showAll = () => targets.forEach((el) => el.classList.add('is-visible'));
+
+        // Fallback : pas d'IntersectionObserver → tout afficher immédiatement.
+        if (!('IntersectionObserver' in window)) return showAll();
+
+        try {
+          const io = new IntersectionObserver(
+            (entries, obs) => {
+              for (const entry of entries) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+                  obs.unobserve(entry.target);
+                }
+              }
+            },
+            { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
+          );
+          targets.forEach((el) => io.observe(el));
+        } catch {
+          showAll();
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,336 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { BOOK, PROGRAMS } from '../config/site';
+import livreMockup from '../assets/livre-mockup.png';
+import livreCover from '../assets/livre-cover.jpg';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  name: BOOK.title,
+  author: { '@type': 'Person', name: 'Alassane' },
+  numberOfPages: BOOK.pages,
+  inLanguage: 'fr',
+  bookFormat: 'https://schema.org/EBook',
+  description:
+    "La méthode complète pour sauter plus haut, performer plus fort et comprendre la science de l'explosivité. 378 pages, 4 parties, 6 programmes et l'application Athletik Hub incluse.",
+  offers: [
+    {
+      '@type': 'Offer',
+      name: 'Édition Kindle',
+      price: '39',
+      priceCurrency: 'EUR',
+      availability: 'https://schema.org/PreOrder',
+    },
+    {
+      '@type': 'Offer',
+      name: 'Édition Papier',
+      price: '69',
+      priceCurrency: 'EUR',
+      availability: 'https://schema.org/PreOrder',
+    },
+  ],
+};
+
+const parts = [
+  {
+    n: 'Partie 1',
+    title: 'La Science du saut',
+    body: 'Les 8 lois de la détente, expliquées sans jargon. Anatomie, biomécanique, physiologie. Périodisation, triple extension, pliométrie. Force, puissance, mobilité. Nutrition, récupération, prévention des blessures.',
+  },
+  {
+    n: 'Partie 2',
+    title: 'Les Méthodes',
+    body: 'La méthode MENER, le cadre qui structure tout ton entraînement. Comment calculer ton NPI. Comment créer un programme adapté à TON profil. Tests et profils athlétiques.',
+  },
+  {
+    n: 'Partie 3',
+    title: 'Les 6 Programmes prêts à l\'emploi',
+    body: 'Tu fais le Bilan Athletic gratuit, le bon programme s\'identifie, tu suis. Elite Athlete, Vertical Dunk, Triphasique, SHRED Explose, Microtraining, EXPLOSE+.',
+  },
+  {
+    n: 'Partie 4',
+    title: 'Ressources',
+    body: 'Conseils de coach, annexes, glossaire, bibliographie scientifique.',
+  },
+];
+---
+
+<BaseLayout
+  title="Le Livre"
+  description="Les Secrets de la Détente Verticale + Athletik Hub : 378 pages, 4 parties, 6 programmes et 1 application. La méthode complète pour sauter plus haut. Kindle 39 € · Papier 69 €."
+  schema={schema}
+>
+  <!-- ===================== BEFORE ===================== -->
+  <section class="chevrons-navy py-20 text-white">
+    <div class="container-site max-w-3xl">
+      <p class="eyebrow">Le constat</p>
+      <h1 class="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+        Tu t'entraînes depuis des mois. Ta détente est au même point.
+      </h1>
+      <p class="mt-6 text-xl font-semibold text-gold">
+        Ce n'est pas normal. Et ce n'est pas ta faute.
+      </p>
+      <p class="mt-5 leading-relaxed text-cream/85">
+        Tu regardes des vidéos. Tu essaies un programme. Deux semaines. Rien. Tu en
+        cherches un autre. Même résultat. Et une pensée s'installe :
+        « C'est peut-être génétique. C'est peut-être pas pour moi. »
+      </p>
+      <p class="mt-5 leading-relaxed text-cream/85">
+        Non. Le problème, c'est que tu travailles <strong class="text-white">sans système</strong>.
+        Et sans système, même les meilleurs exercices donnent des résultats aléatoires.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== AFTER ===================== -->
+  <section class="bg-cream py-20">
+    <div class="container-site max-w-3xl">
+      <p class="eyebrow">La vision</p>
+      <h2 class="text-3xl font-bold text-navy sm:text-4xl">Imagine ça.</h2>
+      <p class="mt-6 leading-relaxed text-navy/80">
+        Tu entres dans un gymnase. Tu sais exactement ce que tu travailles aujourd'hui,
+        pourquoi, et comment mesurer si ça fonctionne. Chaque semaine, tu vois ta
+        progression sur l'app. Chaque mois, ta détente monte. Et un jour, tu décolles
+        pour ce dunk que tu regardais faire aux autres.
+      </p>
+      <p class="mt-5 text-lg font-semibold text-navy">
+        Ce n'est pas un rêve. C'est ce qui arrive quand tu suis un système structuré.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== BRIDGE — LE LIVRE ===================== -->
+  <section class="bg-white py-20">
+    <div class="container-site grid items-center gap-12 lg:grid-cols-2">
+      <!-- Mockup réel : livre papier + ebook -->
+      <div class="flex justify-center">
+        <Image
+          src={livreMockup}
+          alt="Le livre « Les Secrets de la Détente Verticale » en version papier et ebook"
+          class="w-full max-w-xl rounded-2xl shadow-2xl shadow-navy/20"
+          widths={[400, 700, 1000, 1400]}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          loading="eager"
+        />
+      </div>
+
+      <div>
+        <h2 class="text-3xl font-bold text-navy sm:text-4xl">
+          {BOOK.title} <span class="text-gold">+ Athletik Hub</span>
+        </h2>
+        <p class="mt-4 text-lg italic text-navy/70">
+          La méthode complète pour sauter plus haut, performer plus fort et comprendre
+          la science de l'explosivité.
+        </p>
+        <p class="mt-6 font-semibold text-navy">
+          {BOOK.pages} pages. {BOOK.parts} parties. {BOOK.programs} programmes. 1 application mobile.
+        </p>
+
+        <div class="mt-6 flex flex-wrap items-baseline gap-x-6 gap-y-2">
+          <p class="text-2xl font-bold text-navy">
+            Kindle <span class="text-gold">{BOOK.priceKindle}</span>
+          </p>
+          <p class="text-2xl font-bold text-navy">
+            Papier <span class="text-gold">{BOOK.pricePaper}</span>
+          </p>
+        </div>
+
+        <!-- Boutons d'achat — mode « Bientôt disponible » (TODO: liens Amazon KDP) -->
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+          <a href={BOOK.amazonKindle} class="btn-soon" aria-disabled="true">
+            Bientôt disponible — Kindle {BOOK.priceKindle}
+          </a>
+          <a href={BOOK.amazonPaper} class="btn-soon" aria-disabled="true">
+            Bientôt disponible — Papier {BOOK.pricePaper}
+          </a>
+        </div>
+        <p class="mt-3 text-sm text-navy/55">
+          Athletik Hub inclus dans les deux versions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LES 4 PARTIES ===================== -->
+  <section class="bg-cream py-20">
+    <div class="container-site">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow">Ce qu'il y a dedans</p>
+        <h2 class="text-3xl font-bold text-navy sm:text-4xl">4 parties. Un système complet.</h2>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {
+          parts.map((part) => (
+            <div class="rounded-2xl border border-navy/10 bg-white p-7 shadow-sm">
+              <p class="text-sm font-semibold uppercase tracking-wide text-gold">{part.n}</p>
+              <h3 class="mt-1 text-xl font-bold text-navy">{part.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-navy/70">{part.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LES 6 PROGRAMMES ===================== -->
+  <section id="programmes" class="bg-white py-20">
+    <div class="container-site">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow">Partie 3</p>
+        <h2 class="text-3xl font-bold text-navy sm:text-4xl">Les 6 programmes prêts à l'emploi</h2>
+        <p class="mt-4 text-navy/70">
+          Tu fais le Bilan Athletic gratuit, le bon programme s'identifie, tu suis.
+        </p>
+      </div>
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          PROGRAMS.map((prog) => (
+            <div class="group rounded-2xl border border-navy/10 bg-cream/40 p-6 transition-all hover:border-gold hover:shadow-lg hover:shadow-gold/10">
+              <h3 class="font-[var(--font-heading)] text-lg font-bold text-navy">{prog.name}</h3>
+              <p class="mt-2 text-sm text-navy/70">{prog.tagline}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="mt-10 text-center">
+        <button type="button" data-open-quiz class="btn-gold">
+          Trouver mon programme →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ATHLETIK HUB ===================== -->
+  <section id="athletik-hub" class="chevrons-navy py-20 text-white">
+    <div class="container-site grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <p class="eyebrow">L'application incluse</p>
+        <h2 class="text-3xl font-bold sm:text-4xl">
+          Athletik Hub — l'application incluse avec le livre.
+        </h2>
+        <p class="mt-6 leading-relaxed text-cream/85">
+          La plupart des livres de sport t'arrêtent à la page. Athletik Hub va plus loin.
+          Tu trackes tes séances, tu vois ta progression semaine après semaine, tu accèdes
+          aux vidéos de chaque exercice, tu fais tes tests physiques et tu mesures ce qui
+          évolue vraiment.
+        </p>
+        <p class="mt-5 text-lg font-semibold text-gold">
+          Tout ton entraînement, dans ta poche.
+        </p>
+        <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+          {
+            [
+              'Suivi des séances',
+              'Progression en temps réel',
+              'Vidéos de chaque exercice',
+              'Tests physiques & mesures',
+            ].map((feat) => (
+              <li class="flex items-center gap-2 text-sm text-cream/90">
+                <svg class="h-5 w-5 flex-none text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                </svg>
+                {feat}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Mockup app -->
+      <div class="flex justify-center">
+        <div class="aspect-[9/16] w-52 rounded-[2rem] bg-gradient-to-br from-navy-light to-navy-dark p-4 shadow-2xl ring-1 ring-gold/30">
+          <div class="flex h-full flex-col items-center justify-center gap-3 rounded-[1.5rem] border border-white/5 text-center">
+            <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gold/20 text-2xl text-gold">▲</span>
+            <p class="font-[var(--font-heading)] text-lg font-bold text-white">Athletik Hub</p>
+            <p class="px-4 text-xs text-cream/60">Ta progression, séance après séance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== À QUI S'ADRESSE ===================== -->
+  <section class="bg-cream py-20">
+    <div class="container-site grid gap-8 lg:grid-cols-2">
+      <div class="rounded-2xl border border-gold/40 bg-white p-8">
+        <h3 class="text-xl font-bold text-navy">Ce livre est fait pour toi si…</h3>
+        <ul class="mt-5 space-y-3">
+          {
+            [
+              'tu veux dunker et tu sais pas par où commencer',
+              'tu stagnes depuis trop longtemps',
+              "tu veux comprendre la science de l'explosivité",
+              'tu es coach, prépa physique, étudiant STAPS ou BPJEPS',
+              'tu en as marre des programmes qui ne mènent nulle part',
+            ].map((item) => (
+              <li class="flex items-start gap-3 text-sm text-navy/80">
+                <svg class="mt-0.5 h-5 w-5 flex-none text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-navy/10 bg-navy p-8 text-white">
+        <h3 class="text-xl font-bold">Ce livre n'est PAS fait pour toi si…</h3>
+        <ul class="mt-5 space-y-3">
+          {
+            [
+              'tu cherches un programme miracle en 2 semaines',
+              "tu n'es pas prêt à t'investir",
+            ].map((item) => (
+              <li class="flex items-start gap-3 text-sm text-cream/85">
+                <svg class="mt-0.5 h-5 w-5 flex-none text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA FINAL ===================== -->
+  <section class="bg-white py-20">
+    <div class="container-site max-w-3xl text-center">
+      <Image
+        src={livreCover}
+        alt="Couverture du livre Les Secrets de la Détente Verticale"
+        class="mx-auto mb-8 w-40 rounded-lg shadow-xl shadow-navy/20 ring-1 ring-navy/10 sm:w-48"
+        widths={[200, 300, 400]}
+        sizes="200px"
+        loading="lazy"
+      />
+      <h2 class="text-3xl font-bold text-navy sm:text-4xl">
+        Prêt à construire une vraie détente ?
+      </h2>
+      <div class="mt-10 grid gap-5 sm:grid-cols-2">
+        <div class="rounded-2xl border border-navy/10 bg-cream/50 p-8">
+          <p class="font-[var(--font-heading)] text-2xl font-bold text-navy">Kindle</p>
+          <p class="mt-1 text-3xl font-bold text-gold">{BOOK.priceKindle}</p>
+          <p class="mt-3 text-sm text-navy/70">Accès immédiat + Athletik Hub inclus</p>
+          <a href={BOOK.amazonKindle} class="btn-soon mt-6 w-full" aria-disabled="true">
+            Bientôt disponible
+          </a>
+        </div>
+        <div class="rounded-2xl border border-navy/10 bg-cream/50 p-8">
+          <p class="font-[var(--font-heading)] text-2xl font-bold text-navy">Papier</p>
+          <p class="mt-1 text-3xl font-bold text-gold">{BOOK.pricePaper}</p>
+          <p class="mt-3 text-sm text-navy/70">Livre physique + Athletik Hub inclus</p>
+          <a href={BOOK.amazonPaper} class="btn-soon mt-6 w-full" aria-disabled="true">
+            Bientôt disponible
+          </a>
+        </div>
+      </div>
+      <p class="mt-6 text-sm italic text-navy/55">
+        Athletik Hub inclus dans les deux versions.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
