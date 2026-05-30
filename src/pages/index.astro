@@ -5,6 +5,7 @@ import Newsletter from '../components/Newsletter.astro';
 import { SITE, BOOK } from '../config/site';
 import actionHero from '../assets/alassane-action-2.jpg';
 import actionStory from '../assets/alassane-action-1.jpg';
+import livreCover from '../assets/livre-cover.jpg';
 
 const schema = {
   '@context': 'https://schema.org',
@@ -137,16 +138,16 @@ const schema = {
         <a href="/livre" class="btn-gold mt-7">Obtenir le livre + Athletik Hub →</a>
       </div>
 
-      <!-- Mockup livre + app (placeholders visuels, pas de fausse capture) -->
+      <!-- Couverture réelle du livre + app Athletik Hub -->
       <div class="flex items-end justify-center gap-5">
-        <div class="aspect-[3/4] w-44 rotate-[-4deg] rounded-lg bg-gradient-to-br from-navy-light to-navy-dark p-5 shadow-2xl ring-1 ring-gold/30 sm:w-52">
-          <div class="flex h-full flex-col justify-between">
-            <p class="font-[var(--font-heading)] text-sm font-bold leading-tight text-gold">
-              Les Secrets de la Détente Verticale
-            </p>
-            <p class="text-[10px] uppercase tracking-widest text-cream/60">Le livre</p>
-          </div>
-        </div>
+        <Image
+          src={livreCover}
+          alt="Couverture du livre Les Secrets de la Détente Verticale"
+          class="w-44 rotate-[-4deg] rounded-lg shadow-2xl shadow-black/40 ring-1 ring-gold/20 sm:w-56"
+          widths={[220, 340, 460]}
+          sizes="(max-width: 640px) 176px, 224px"
+          loading="lazy"
+        />
         <div class="aspect-[9/16] w-28 rotate-[4deg] rounded-2xl bg-gradient-to-br from-gold/20 to-navy-light p-3 shadow-2xl ring-1 ring-gold/30 sm:w-32">
           <div class="flex h-full flex-col items-center justify-center text-center">
             <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gold/20 text-gold">▲</span>
