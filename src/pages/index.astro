@@ -22,22 +22,27 @@ const schema = {
   description="Un athlète explosif, ça ne naît pas, ça se construit. Le livre Les Secrets de la Détente Verticale + l'app Athletik Hub : un système complet pour sauter plus haut."
   schema={schema}
 >
-  <!-- ===================== HERO ===================== -->
-  <section class="relative flex min-h-[78vh] items-center overflow-hidden bg-gradient-to-b from-navy-light via-navy to-navy-dark text-white">
-    <!-- Halo doré subtil pour la profondeur (sans photo). -->
-    <div
-      class="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-gold/10 blur-3xl"
-      aria-hidden="true"
-    >
-    </div>
+  <!-- ===================== HERO (photo terrain plein cadre) ===================== -->
+  <section class="relative flex min-h-[88vh] items-center overflow-hidden bg-navy text-white">
+    <Image
+      src={courtNight}
+      alt="Alassane sur un terrain de basket en soirée, en plein coaching"
+      class="absolute inset-0 h-full w-full object-cover object-center"
+      widths={[640, 1024, 1440, 1920]}
+      sizes="100vw"
+      loading="eager"
+    />
+    <!-- Dégradés pour la lisibilité du texte (assombrit gauche + bas). -->
+    <div class="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/30"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-navy/40"></div>
 
     <div class="container-site relative py-24">
-      <div class="max-w-4xl">
+      <div class="max-w-3xl">
         <h1 class="display-hero">
           Un athlète explosif,<br />ça ne naît pas.
           <span class="text-gold">Ça se construit.</span>
         </h1>
-        <p class="mt-8 max-w-xl text-lg leading-relaxed text-cream/85">
+        <p class="mt-8 max-w-xl text-lg leading-relaxed text-cream/90">
           Voici ce que j'ai appris en passant de <strong class="text-white">56 cm à 88 cm</strong> de détente.
           Pas en un mois. En 4 ans. Avec beaucoup d'erreurs entre les deux.
         </p>
@@ -51,36 +56,20 @@ const schema = {
     </div>
   </section>
 
-  <!-- ===================== BANDE CINÉMATIQUE (terrain) ===================== -->
-  <section class="relative bg-navy">
-    <div class="relative h-[58vh] min-h-[420px] w-full overflow-hidden">
-      <Image
-        src={courtNight}
-        alt="Alassane sur un terrain de basket en soirée, en plein coaching"
-        class="absolute inset-0 h-full w-full object-cover object-center"
-        widths={[640, 1024, 1440]}
-        sizes="100vw"
-        loading="lazy"
-      />
-      <!-- Dégradés : fond le haut et le bas dans le navy (transition propre). -->
-      <div class="absolute inset-0 bg-gradient-to-b from-navy via-navy/15 to-navy"></div>
-
-      <!-- Badges chiffres réels (façon Garage Strength). -->
-      <div class="absolute inset-x-0 bottom-0">
-        <div class="container-site flex flex-wrap items-end justify-center gap-x-12 gap-y-6 pb-10 text-center text-white sm:gap-x-20">
-          <div>
-            <p class="font-[var(--font-heading)] text-4xl italic text-gold sm:text-5xl">900+</p>
-            <p class="mt-1 text-xs uppercase tracking-[0.18em] text-cream/80">athlètes testés</p>
-          </div>
-          <div>
-            <p class="font-[var(--font-heading)] text-4xl italic text-gold sm:text-5xl">+32 cm</p>
-            <p class="mt-1 text-xs uppercase tracking-[0.18em] text-cream/80">de détente gagnés</p>
-          </div>
-          <div>
-            <p class="font-[var(--font-heading)] text-4xl italic text-gold sm:text-5xl">10 000 €</p>
-            <p class="mt-1 text-xs uppercase tracking-[0.18em] text-cream/80">investis pour comprendre</p>
-          </div>
-        </div>
+  <!-- ===================== BANDEAU CHIFFRES ===================== -->
+  <section class="border-b border-white/10 bg-navy-dark py-9">
+    <div class="container-site flex flex-wrap items-end justify-center gap-x-12 gap-y-6 text-center text-white sm:gap-x-24">
+      <div>
+        <p class="font-[var(--font-heading)] text-4xl italic text-gold sm:text-5xl">900+</p>
+        <p class="mt-1 text-xs uppercase tracking-[0.18em] text-cream/75">athlètes testés</p>
+      </div>
+      <div>
+        <p class="font-[var(--font-heading)] text-4xl italic text-gold sm:text-5xl">+32 cm</p>
+        <p class="mt-1 text-xs uppercase tracking-[0.18em] text-cream/75">de détente gagnés</p>
+      </div>
+      <div>
+        <p class="font-[var(--font-heading)] text-4xl italic text-gold sm:text-5xl">10 000 €</p>
+        <p class="mt-1 text-xs uppercase tracking-[0.18em] text-cream/75">investis pour comprendre</p>
       </div>
     </div>
   </section>
