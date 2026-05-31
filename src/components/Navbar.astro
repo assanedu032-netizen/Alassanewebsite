@@ -18,7 +18,7 @@ const isActive = (href: string) =>
     </a>
 
     <!-- Menu desktop -->
-    <ul class="hidden items-center gap-7 lg:flex">
+    <ul class="hidden items-center gap-6 xl:flex">
       {
         NAV_LINKS.map((link) => (
           <li>
@@ -38,7 +38,7 @@ const isActive = (href: string) =>
     </ul>
 
     <!-- Réseaux + CTA desktop -->
-    <div class="hidden items-center gap-4 lg:flex">
+    <div class="hidden items-center gap-4 xl:flex">
       <a
         href={SOCIALS.instagram}
         target="_blank"
@@ -68,7 +68,7 @@ const isActive = (href: string) =>
     <button
       id="nav-toggle"
       type="button"
-      class="inline-flex items-center justify-center rounded-md p-2 text-cream lg:hidden"
+      class="inline-flex items-center justify-center rounded-md p-2 text-cream xl:hidden"
       aria-label="Ouvrir le menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
@@ -83,7 +83,7 @@ const isActive = (href: string) =>
   </nav>
 
   <!-- Menu mobile -->
-  <div id="mobile-menu" class="hidden border-t border-white/10 bg-navy lg:hidden">
+  <div id="mobile-menu" class="hidden border-t border-white/10 bg-navy xl:hidden">
     <ul class="container-site flex flex-col gap-1 py-4">
       {
         NAV_LINKS.map((link) => (
@@ -121,11 +121,20 @@ const isActive = (href: string) =>
   const iconOpen = document.getElementById('icon-open');
   const iconClose = document.getElementById('icon-close');
 
+  function setMenu(open: boolean) {
+    menu?.classList.toggle('hidden', !open);
+    iconOpen?.classList.toggle('hidden', open);
+    iconClose?.classList.toggle('hidden', !open);
+    toggle?.setAttribute('aria-expanded', String(open));
+    toggle?.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  }
+
   toggle?.addEventListener('click', () => {
-    const isOpen = menu?.classList.toggle('hidden') === false;
-    iconOpen?.classList.toggle('hidden', isOpen);
-    iconClose?.classList.toggle('hidden', !isOpen);
-    toggle.setAttribute('aria-expanded', String(isOpen));
-    toggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+    setMenu(menu?.classList.contains('hidden') === true);
+  });
+
+  // Ferme le menu après un clic sur un lien (utile sur mobile).
+  menu?.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => setMenu(false));
   });
 </script>

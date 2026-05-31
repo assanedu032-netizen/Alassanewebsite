@@ -35,22 +35,27 @@ const formattedDate = post.data.date.toLocaleDateString('fr-FR', {
   year: 'numeric',
 });
 
+const articleUrl = `${SITE.url}/blog/${post.id}`;
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: post.data.title,
   description: post.data.description,
   datePublished: post.data.date.toISOString(),
+  dateModified: post.data.date.toISOString(),
+  inLanguage: 'fr',
   author: { '@type': 'Person', name: SITE.author },
   publisher: { '@type': 'Organization', name: SITE.name },
   articleSection: post.data.category,
-  url: `${SITE.url}/blog/${post.id}`,
+  mainEntityOfPage: articleUrl,
+  url: articleUrl,
 };
 ---
 
 <BaseLayout
   title={post.data.title}
   description={post.data.description}
+  appendBrand={false}
   schema={schema}
   showQuiz={false}
 >
@@ -133,19 +138,26 @@ const schema = {
 </BaseLayout>
 
 <style>
-  /* Styles de contenu d'article (prose maison, sobre, aux couleurs de marque) */
+  /* Styles de contenu d'article (prose maison, sobre, aux couleurs de marque).
+     Titres d'article en casse normale (lisibilité) plutôt qu'en MAJUSCULES italiques. */
   .prose-article :global(h2) {
     font-family: var(--font-heading);
-    font-size: 1.6rem;
+    font-size: 1.65rem;
     font-weight: 700;
+    text-transform: none;
+    font-style: normal;
+    letter-spacing: 0;
     color: var(--color-navy);
     margin-top: 2.5rem;
     margin-bottom: 1rem;
+    line-height: 1.2;
   }
   .prose-article :global(h3) {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 700;
+    text-transform: none;
+    font-style: normal;
     color: var(--color-navy);
     margin-top: 2rem;
     margin-bottom: 0.75rem;
@@ -178,5 +190,55 @@ const schema = {
   .prose-article :global(img) {
     border-radius: 1rem;
     margin: 1.5rem 0;
+  }
+
+  /* Blocs CTA insérés dans le contenu Markdown (HTML brut). */
+  .prose-article :global(.article-cta) {
+    margin: 2.25rem 0;
+    border: 1px solid color-mix(in srgb, var(--color-gold) 55%, transparent);
+    background: var(--color-cream);
+    border-radius: 1rem;
+    padding: 1.5rem 1.75rem;
+  }
+  .prose-article :global(.article-cta-title) {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-navy);
+    margin-bottom: 0.5rem;
+  }
+  .prose-article :global(.article-cta p) {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+  .prose-article :global(.article-cta-actions) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+  .prose-article :global(.article-cta-btn) {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    background: var(--color-gold);
+    color: var(--color-navy);
+    padding: 0.6rem 1.4rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+  .prose-article :global(.article-cta-btn:hover) {
+    background: var(--color-gold-light);
+  }
+  .prose-article :global(.article-cta-link) {
+    color: var(--color-gold-dark);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .prose-article :global(.article-cta-link:hover) {
+    text-decoration: underline;
   }
 </style>

@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { BOOK, PROGRAMS } from '../config/site';
+import { BOOK, PROGRAMS, SITE } from '../config/site';
 import livreMockup from '../assets/livre-mockup.png';
 import livreCover from '../assets/livre-cover.jpg';
 import effortDay from '../assets/effort-day.jpg';
@@ -10,10 +10,12 @@ const schema = {
   '@context': 'https://schema.org',
   '@type': 'Book',
   name: BOOK.title,
-  author: { '@type': 'Person', name: 'Alassane' },
+  author: { '@type': 'Person', name: 'Alassane Ndiaye' },
   numberOfPages: BOOK.pages,
   inLanguage: 'fr',
   bookFormat: 'https://schema.org/EBook',
+  url: `${SITE.url}/livre`,
+  image: `${SITE.url}/og-default.png`,
   description:
     "La méthode complète pour sauter plus haut, performer plus fort et comprendre la science de l'explosivité. 378 pages, 4 parties, 6 programmes et l'application Athletik Hub incluse.",
   offers: [
@@ -59,8 +61,9 @@ const parts = [
 ---
 
 <BaseLayout
-  title="Le Livre"
-  description="Les Secrets de la Détente Verticale + Athletik Hub : 378 pages, 4 parties, 6 programmes et 1 application. La méthode complète pour sauter plus haut. Kindle 39 € · Papier 69 €."
+  title="Livre détente verticale : Les Secrets de la Détente Verticale"
+  description="Un livre complet pour améliorer ta détente verticale, comprendre la science du saut et suivre 6 programmes avec Athletik Hub inclus."
+  appendBrand={false}
   schema={schema}
 >
   <!-- ===================== BEFORE ===================== -->
@@ -68,9 +71,9 @@ const parts = [
     <div class="container-site grid items-center gap-12 lg:grid-cols-2">
       <div>
         <p class="eyebrow">Le constat</p>
-        <h1 class="display-section">
+        <h2 class="display-section">
           Tu t'entraînes depuis des mois. Ta détente est au même point&nbsp;?
-        </h1>
+        </h2>
         <p class="mt-6 text-xl font-semibold text-gold">
           Ce n'est pas normal. Et ce n'est pas ta faute.
         </p>
@@ -130,12 +133,12 @@ const parts = [
       </div>
 
       <div>
-        <h2 class="text-3xl font-bold text-navy sm:text-4xl">
+        <h1 class="text-3xl font-bold text-navy sm:text-4xl">
           {BOOK.title} <span class="text-gold">+ Athletik Hub</span>
-        </h2>
+        </h1>
         <p class="mt-4 text-lg italic text-navy/70">
-          La méthode complète pour sauter plus haut, performer plus fort et comprendre
-          la science de l'explosivité.
+          Le livre pour sauter plus haut : la méthode complète pour comprendre la science
+          du saut, développer ton explosivité et progresser sans t'entraîner au hasard.
         </p>
         <p class="mt-6 font-semibold text-navy">
           {BOOK.pages} pages. {BOOK.parts} parties. {BOOK.programs} programmes. 1 application mobile.
@@ -249,6 +252,7 @@ const parts = [
             ))
           }
         </ul>
+        <a href="/application" class="btn-outline mt-7">Découvrir l'application incluse →</a>
       </div>
 
       <!-- Mockup app -->
@@ -305,6 +309,34 @@ const parts = [
             ))
           }
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== À LIRE SUR LE BLOG ===================== -->
+  <section class="bg-cream py-20">
+    <div class="container-site">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow">Sur le blog</p>
+        <h2 class="text-3xl font-bold text-navy sm:text-4xl">Commence à apprendre, gratuitement</h2>
+        <p class="mt-4 text-navy/70">
+          Des articles concrets sur la détente verticale — un bon point de départ avant le livre.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-5 sm:grid-cols-3">
+        {
+          [
+            { href: '/blog/comment-ameliorer-sa-detente-verticale', cat: 'Entraînement', title: 'Comment améliorer sa détente verticale au basketball' },
+            { href: '/blog/exercices-pliometrie-detente-verticale', cat: 'Entraînement', title: 'Les meilleurs exercices de pliométrie pour ta détente' },
+            { href: '/blog/programme-detente-verticale-debutant', cat: 'Entraînement', title: 'Programme détente verticale débutant : par où commencer' },
+          ].map((a) => (
+            <a href={a.href} class="group rounded-2xl border border-navy/10 bg-white p-6 transition-all hover:border-gold hover:shadow-lg">
+              <span class="text-xs font-semibold uppercase tracking-wide text-gold">{a.cat}</span>
+              <h3 class="mt-2 text-lg font-bold text-navy group-hover:text-gold-dark">{a.title}</h3>
+              <span class="mt-3 inline-block text-sm font-semibold text-gold-dark">Lire l'article →</span>
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>

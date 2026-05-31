@@ -5,9 +5,9 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 // Site URL — utilisé pour le sitemap, les balises canoniques et Open Graph.
-// TODO: remplacer par le domaine final une fois Netlify configuré.
+// Domaine final du projet (à connecter sur Netlify quand prêt).
 export default defineConfig({
-  site: 'https://aquamarine-sfogliatella-c50b7e.netlify.app',
+  site: 'https://alassanecoaching.com',
   integrations: [react(), sitemap()],
   vite: {
     plugins: [tailwindcss()],

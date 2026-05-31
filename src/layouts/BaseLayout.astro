@@ -14,6 +14,8 @@ interface Props {
   showQuiz?: boolean;
   /** JSON-LD Schema.org à injecter (objet sérialisable). */
   schema?: Record<string, unknown> | Record<string, unknown>[];
+  /** Si false, le `<title>` est utilisé tel quel (sans « · Alassane Coaching »). */
+  appendBrand?: boolean;
 }
 
 const {
@@ -22,12 +24,13 @@ const {
   ogImage = '/og-default.png',
   showQuiz = true,
   schema,
+  appendBrand = true,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
 const ogImageUrl = new URL(ogImage, SITE.url).href;
 const fullTitle =
-  title === SITE.name ? title : `${title} · ${SITE.name}`;
+  appendBrand && title !== SITE.name ? `${title} · ${SITE.name}` : title;
 ---
 
 <!doctype html>

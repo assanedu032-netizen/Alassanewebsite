@@ -18,8 +18,9 @@ const schema = {
 ---
 
 <BaseLayout
-  title={SITE.name}
-  description="Un athlète explosif, ça ne naît pas, ça se construit. Le livre Les Secrets de la Détente Verticale + l'app Athletik Hub : un système complet pour sauter plus haut."
+  title="Détente verticale : livre, méthode et application de coaching"
+  description="Découvre la méthode d'Alassane pour améliorer ta détente verticale, développer ton explosivité et progresser avec le livre Les Secrets de la Détente Verticale et Athletik Hub."
+  appendBrand={false}
   schema={schema}
 >
   <!-- ===================== HERO ===================== -->
@@ -32,13 +33,15 @@ const schema = {
 
     <div class="container-site relative py-24">
       <div class="max-w-4xl">
+        <p class="eyebrow">Détente verticale · Explosivité · Basketball</p>
         <h1 class="display-hero">
           Un athlète explosif,<br />ça ne naît pas.
           <span class="text-gold">Ça se construit.</span>
         </h1>
         <p class="mt-8 max-w-xl text-lg leading-relaxed text-cream/85">
-          Voici ce que j'ai appris en passant de <strong class="text-white">56 cm à 88 cm</strong> de détente.
-          Pas en un mois. En 4 ans. Avec beaucoup d'erreurs entre les deux.
+          La méthode pour améliorer ta <strong class="text-white">détente verticale</strong> :
+          j'ai gagné <strong class="text-white">32 cm</strong> (de 56 à 88 cm) en construisant un
+          vrai système. Voici comment progresser sans t'entraîner au hasard.
         </p>
         <div class="mt-9 flex flex-col gap-3 sm:flex-row">
           <a href="/livre" class="btn-gold">Découvrir le livre →</a>
@@ -133,6 +136,10 @@ const schema = {
           Ces 3 points, c'est la base de tout ce que tu trouveras dans le livre.
         </p>
         <a href="/livre" class="btn-gold mt-5">Voir le système complet →</a>
+        <p class="mt-4 text-sm text-navy/60">
+          Ou commence à lire :
+          <a href="/blog" class="font-semibold text-gold-dark underline">le blog détente verticale</a>.
+        </p>
       </div>
     </div>
   </section>
@@ -164,7 +171,10 @@ const schema = {
         <p class="mt-6 text-lg font-semibold text-white">
           Tout ce qu'il te faut. Dans un seul endroit.
         </p>
-        <a href="/livre" class="btn-gold mt-7">Obtenir le livre + Athletik Hub →</a>
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+          <a href="/livre" class="btn-gold">Découvrir le livre →</a>
+          <a href="/application" class="btn-outline">Découvrir Athletik Hub →</a>
+        </div>
       </div>
 
       <!-- Couverture réelle du livre + app Athletik Hub -->

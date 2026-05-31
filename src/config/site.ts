@@ -9,16 +9,17 @@ export const SITE = {
   baseline: 'Coach en performance athlétique',
   description:
     "Les Secrets de la Détente Verticale : le livre et l'application Athletik Hub pour comprendre la science de l'explosivité et construire une vraie détente verticale.",
-  url: 'https://aquamarine-sfogliatella-c50b7e.netlify.app',
+  url: 'https://alassanecoaching.com',
   locale: 'fr_FR',
-  author: 'Alassane',
+  author: 'Alassane Ndiaye',
 } as const;
 
 export const NAV_LINKS = [
   { label: 'Accueil', href: '/' },
   { label: 'Le Livre', href: '/livre' },
-  { label: 'Réserver un bilan', href: '/bilan' },
+  { label: 'Athletik Hub', href: '/application' },
   { label: 'Blog', href: '/blog' },
+  { label: 'Réserver un bilan', href: '/bilan' },
   { label: 'À propos', href: '/a-propos' },
   { label: 'Contact', href: '/contact' },
 ] as const;

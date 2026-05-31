@@ -1,18 +1,26 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE } from '../config/site';
+import { SITE, SOCIALS } from '../config/site';
 import portrait from '../assets/alassane-portrait.jpg';
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Alassane',
-  jobTitle: 'Coach en performance athlétique',
+  name: 'Alassane Ndiaye',
+  jobTitle: 'Coach spécialisé en détente verticale et explosivité',
   description:
-    "Coach en performance athlétique, certifié ISSA, formé aux États-Unis avec des coachs NBA et NFL. Auteur de « Les Secrets de la Détente Verticale ».",
+    "Coach spécialisé en détente verticale et explosivité, certifié ISSA, formé aux États-Unis avec des coachs NBA et NFL. Auteur de « Les Secrets de la Détente Verticale ».",
   url: `${SITE.url}/a-propos`,
-  knowsAbout: ['Détente verticale', 'Pliométrie', 'Préparation physique', 'Explosivité'],
+  sameAs: [SOCIALS.instagram],
+  knowsAbout: [
+    'Détente verticale',
+    'Explosivité',
+    'Basketball',
+    'Préparation physique',
+    'Performance athlétique',
+    'Pliométrie',
+  ],
   hasCredential: 'Certification ISSA',
 };
 
@@ -27,15 +35,16 @@ const stats = [
 ---
 
 <BaseLayout
-  title="À propos"
-  description="J'avais 14 ans, moins d'1m60, et on m'a dit que j'avais pas le profil. 4 ans plus tard : 56 cm → 88 cm de détente. Voici l'histoire derrière Alassane Coaching."
+  title="Alassane Ndiaye : coach détente verticale et explosivité"
+  description="Découvre le parcours d'Alassane Ndiaye, coach spécialisé en détente verticale, explosivité et performance athlétique."
+  appendBrand={false}
   schema={schema}
 >
   <!-- ===================== HOOK ===================== -->
   <section class="bg-navy py-20 text-white">
     <div class="container-site grid items-center gap-12 lg:grid-cols-2">
       <div>
-        <p class="eyebrow">Mon histoire</p>
+        <p class="eyebrow">Alassane Ndiaye · Coach détente verticale &amp; explosivité</p>
         <h1 class="display-section">
           J'avais 14 ans. Moins d'1m60. Et on m'a dit que j'avais pas le profil.
         </h1>
@@ -115,9 +124,14 @@ const stats = [
           ))
         }
       </div>
-      <div class="mt-12 text-center">
-        <a href="/livre" class="btn-gold">Voir le livre →</a>
+      <div class="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href="/livre" class="btn-gold">Découvrir le livre →</a>
+        <a href="/application" class="btn-outline">Voir Athletik Hub →</a>
       </div>
+      <p class="mt-5 text-center text-sm text-cream/70">
+        Envie de conseils concrets ?
+        <a href="/blog" class="font-semibold text-gold underline">Lis le blog détente verticale</a>.
+      </p>
     </div>
   </section>
 </BaseLayout>
