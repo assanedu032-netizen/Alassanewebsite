@@ -1,5 +1,6 @@
 ---
 title: "Exercices pliométrie détente verticale : les meilleurs exercices"
+heading: "Les meilleurs exercices de pliométrie pour améliorer ta détente verticale"
 description: "Découvre les meilleurs exercices de pliométrie pour améliorer ta détente verticale, sauter plus haut et développer ton explosivité au basketball."
 date: 2026-05-29
 category: "Entraînement"
@@ -26,7 +27,7 @@ Cet article va te donner les exercices les plus utiles. Le livre, lui, t'aide à
 <div class="article-cta">
   <p class="article-cta-title">Découvrir la méthode complète</p>
   <p>Les exercices ne suffisent pas : c'est le dosage, le timing et la progression qui font la différence.</p>
-  <p class="article-cta-actions"><a class="article-cta-btn" href="/livre">Découvrir le livre</a></p>
+  <p class="article-cta-actions"><a class="article-cta-btn" href="/livre/">Découvrir le livre</a></p>
 </div>
 
 ## C'est quoi la pliométrie ?
@@ -72,7 +73,7 @@ La pliométrie est un outil. Mais sans méthode, un outil peut vite devenir une 
 <div class="article-cta">
   <p class="article-cta-title">Utiliser la pliométrie intelligemment</p>
   <p>Le livre t'aide à comprendre comment doser et placer tes sauts au lieu d'accumuler de la fatigue.</p>
-  <p class="article-cta-actions"><a class="article-cta-btn" href="/livre">Lire le livre</a></p>
+  <p class="article-cta-actions"><a class="article-cta-btn" href="/livre/">Lire le livre</a></p>
 </div>
 
 ## Exercice 1 : Pogo jumps
@@ -260,7 +261,7 @@ Et avec **Athletik Hub**, l'objectif est de transformer cette méthode en accomp
   <p class="article-cta-title">Découvrir Les Secrets de la Détente Verticale</p>
   <p>Apprends à utiliser la pliométrie au bon moment, au bon dosage, dans une vraie progression.</p>
   <p class="article-cta-actions">
-    <a class="article-cta-btn" href="/livre">Découvrir le livre</a>
-    <a class="article-cta-link" href="/application">Découvrir Athletik Hub →</a>
+    <a class="article-cta-btn" href="/livre/">Découvrir le livre</a>
+    <a class="article-cta-link" href="/application/">Découvrir Athletik Hub →</a>
   </p>
 </div>

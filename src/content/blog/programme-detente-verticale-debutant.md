@@ -1,5 +1,6 @@
 ---
 title: "Programme détente verticale débutant : plan simple pour progresser"
+heading: "Programme détente verticale débutant : comment structurer tes premières semaines"
 description: "Découvre comment structurer un programme détente verticale débutant pour développer ta force, ton explosivité et apprendre à sauter plus haut."
 date: 2026-05-28
 category: "Entraînement"
@@ -28,7 +29,7 @@ Ici, tu vas avoir une base. Dans le livre, tu vas plus loin.
 <div class="article-cta">
   <p class="article-cta-title">Découvrir le livre</p>
   <p>Une base ici, la méthode complète dans le livre pour construire une vraie progression.</p>
-  <p class="article-cta-actions"><a class="article-cta-btn" href="/livre">Découvrir le livre</a></p>
+  <p class="article-cta-actions"><a class="article-cta-btn" href="/livre/">Découvrir le livre</a></p>
 </div>
 
 ## L'objectif d'un programme débutant
@@ -125,7 +126,7 @@ Tu dois savoir quand renforcer, quand sauter, quand récupérer, quand tester et
 <div class="article-cta">
   <p class="article-cta-title">Voir la méthode complète dans le livre</p>
   <p>Apprends quand renforcer, quand sauter, quand récupérer et quand changer de phase.</p>
-  <p class="article-cta-actions"><a class="article-cta-btn" href="/livre">Découvrir le livre</a></p>
+  <p class="article-cta-actions"><a class="article-cta-btn" href="/livre/">Découvrir le livre</a></p>
 </div>
 
 ## Exemple de programme simple sur 3 séances
@@ -275,7 +276,7 @@ Et avec **Athletik Hub**, l'objectif est de donner aux lecteurs du livre une app
   <p class="article-cta-title">Commencer avec le livre : Les Secrets de la Détente Verticale</p>
   <p>Un vrai plan, une vraie progression — et Athletik Hub pour aller plus loin.</p>
   <p class="article-cta-actions">
-    <a class="article-cta-btn" href="/livre">Découvrir le livre</a>
-    <a class="article-cta-link" href="/application">Découvrir Athletik Hub →</a>
+    <a class="article-cta-btn" href="/livre/">Découvrir le livre</a>
+    <a class="article-cta-link" href="/application/">Découvrir Athletik Hub →</a>
   </p>
 </div>

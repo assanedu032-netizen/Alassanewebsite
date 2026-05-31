@@ -26,7 +26,7 @@ Dans cet article, je vais te donner les fondations. Si tu veux la méthode compl
 <div class="article-cta">
   <p class="article-cta-title">Découvrir le livre : Les Secrets de la Détente Verticale</p>
   <p>Cet article te donne les fondations. Le livre, lui, t'aide à les organiser dans une vraie méthode.</p>
-  <p class="article-cta-actions"><a class="article-cta-btn" href="/livre">Découvrir le livre</a></p>
+  <p class="article-cta-actions"><a class="article-cta-btn" href="/livre/">Découvrir le livre</a></p>
 </div>
 
 ## Pourquoi ta détente verticale ne progresse pas
@@ -129,7 +129,7 @@ L'objectif n'est pas seulement de « sauter plus ». L'objectif est de comprendr
 <div class="article-cta">
   <p class="article-cta-title">Voir la méthode complète dans le livre</p>
   <p>Force, explosivité, pliométrie, technique, récupération : tout est organisé dans une vraie progression.</p>
-  <p class="article-cta-actions"><a class="article-cta-btn" href="/livre">Découvrir le livre</a></p>
+  <p class="article-cta-actions"><a class="article-cta-btn" href="/livre/">Découvrir le livre</a></p>
 </div>
 
 ## Comment structurer ton entraînement
@@ -249,7 +249,7 @@ Et le livre est aussi connecté à **Athletik Hub**, l'application de coaching q
   <p class="article-cta-title">Prêt à construire ta détente verticale avec une vraie méthode ?</p>
   <p>Cet article te donne les bases. Le livre t'aide à aller plus loin, et Athletik Hub prolonge la méthode en accompagnement concret.</p>
   <p class="article-cta-actions">
-    <a class="article-cta-btn" href="/livre">Découvrir le livre</a>
-    <a class="article-cta-link" href="/application">Découvrir Athletik Hub →</a>
+    <a class="article-cta-btn" href="/livre/">Découvrir le livre</a>
+    <a class="article-cta-link" href="/application/">Découvrir Athletik Hub →</a>
   </p>
 </div>

@@ -16,6 +16,8 @@ const blog = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      /** H1 affiché si différent du title SEO (sinon on réutilise title). */
+      heading: z.string().optional(),
       description: z.string(),
       date: z.coerce.date(),
       category: z.enum([
