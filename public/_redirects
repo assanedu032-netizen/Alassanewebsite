@@ -1,0 +1,8 @@
+# Redirige l'ancien sous-domaine Netlify vers le domaine officiel (301 permanent).
+#
+# IMPORTANT — anti-boucle : la source contient le HOST complet de l'ancien
+# sous-domaine. La règle ne se déclenche donc QUE pour les requêtes arrivant sur
+# aquamarine-sfogliatella-c50b7e.netlify.app, jamais pour alassanecoaching.com.
+# Le chemin est préservé via :splat.
+https://aquamarine-sfogliatella-c50b7e.netlify.app/*  https://alassanecoaching.com/:splat  301!
+http://aquamarine-sfogliatella-c50b7e.netlify.app/*   https://alassanecoaching.com/:splat  301!
