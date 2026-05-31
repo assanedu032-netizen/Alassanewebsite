@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoEmbed from '../components/VideoEmbed.astro';
 
 const benefits = [
   {
@@ -177,6 +178,23 @@ const benefits = [
         </button>
         en 1 minute.
       </p>
+    </div>
+  </section>
+
+  <!-- ===================== EN VIDÉO ===================== -->
+  <section class="bg-navy py-16 text-white">
+    <div class="container-site max-w-4xl text-center">
+      <p class="eyebrow">En vidéo</p>
+      <h2 class="display-section">Fais connaissance avant ton bilan.</h2>
+      <p class="mx-auto mt-4 max-w-xl text-cream/80">
+        Une vidéo vaut mille mots : découvre ma méthode et l'état d'esprit avant qu'on échange.
+      </p>
+      <div class="mt-10">
+        <VideoEmbed
+          title="Présentation — Alassane Coaching"
+          youtubeId="i2_HPT3Catc"
+        />
+      </div>
     </div>
   </section>
 </BaseLayout>
