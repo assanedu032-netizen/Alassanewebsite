@@ -109,9 +109,10 @@
     @apply inline-flex items-center justify-center gap-2 rounded-full bg-navy-light px-6 py-3 font-semibold text-cream/80 ring-1 ring-inset ring-gold/40 cursor-not-allowed;
   }
 
-  /* Conteneur de section standard */
+  /* Conteneur de section standard — large sur desktop pour limiter le vide sur
+     les côtés. Les textes longs gardent leur propre largeur lisible (max-w-2xl/3xl). */
   .container-site {
-    @apply mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-6 lg:px-8;
   }
 
   /* Surtitre doré en petites capitales */
