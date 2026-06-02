@@ -9,10 +9,10 @@
   --color-navy: #1b2a4a;
   --color-navy-light: #28395f;
   --color-navy-dark: #131f38;
-  /* Or plus lumineux (demande client). Ancien : #c5a44e */
-  --color-gold: #e3bc4a;
-  --color-gold-light: #f2d780;
-  --color-gold-dark: #c19a38;
+  /* Or classique de la marque — aligné sur la couverture du livre et les mockups app. */
+  --color-gold: #c5a44e;
+  --color-gold-light: #d6bb73;
+  --color-gold-dark: #a98a3c;
   --color-cream: #f5f3ee;
 
   /*
