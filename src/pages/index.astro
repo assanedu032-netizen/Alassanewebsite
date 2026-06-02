@@ -3,9 +3,9 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import { SITE, BOOK, SOCIALS } from '../config/site';
-import livreCover from '../assets/livre-cover.jpg';
 import courtNight from '../assets/court-night.jpg';
 import squatDay from '../assets/squat-day.jpg';
+import appLivreApp from '../assets/app-livre-app.jpg';
 import VideoEmbed from '../components/VideoEmbed.astro';
 
 // Réseaux réels uniquement (on exclut les placeholders « # »).
@@ -194,22 +194,16 @@ const schema = [
         </div>
       </div>
 
-      <!-- Couverture réelle du livre + app Athletik Hub -->
-      <div class="flex items-end justify-center gap-5">
+      <!-- Visuel réel : le livre + l'application Athletik Hub -->
+      <div class="flex justify-center">
         <Image
-          src={livreCover}
-          alt="Couverture du livre Les Secrets de la Détente Verticale"
-          class="w-44 rotate-[-4deg] rounded-lg shadow-2xl shadow-black/40 ring-1 ring-gold/20 sm:w-56"
-          widths={[220, 340, 460]}
-          sizes="(max-width: 640px) 176px, 224px"
+          src={appLivreApp}
+          alt="Le livre Les Secrets de la Détente Verticale et l'application Athletik Hub"
+          class="w-full max-w-xl rounded-2xl shadow-2xl shadow-black/40"
+          widths={[400, 700, 1000]}
+          sizes="(max-width: 1024px) 100vw, 50vw"
           loading="lazy"
         />
-        <div class="aspect-[9/16] w-28 rotate-[4deg] rounded-2xl bg-gradient-to-br from-gold/20 to-navy-light p-3 shadow-2xl ring-1 ring-gold/30 sm:w-32">
-          <div class="flex h-full flex-col items-center justify-center text-center">
-            <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gold/20 text-gold">▲</span>
-            <p class="mt-2 text-[10px] font-semibold uppercase tracking-wider text-cream/70">Athletik Hub</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>

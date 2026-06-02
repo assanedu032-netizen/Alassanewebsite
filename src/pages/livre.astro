@@ -5,6 +5,7 @@ import { BOOK, PROGRAMS, SITE } from '../config/site';
 import livreMockup from '../assets/livre-mockup.png';
 import livreCover from '../assets/livre-cover.jpg';
 import effortDay from '../assets/effort-day.jpg';
+import appMockup from '../assets/app-mockup.jpg';
 
 const schema = {
   '@context': 'https://schema.org',
@@ -255,15 +256,16 @@ const parts = [
         <a href="/application" class="btn-outline mt-7">Découvrir l'application incluse →</a>
       </div>
 
-      <!-- Mockup app -->
+      <!-- Mockup app réel (écran de l'app + livre) -->
       <div class="flex justify-center">
-        <div class="aspect-[9/16] w-52 rounded-[2rem] bg-gradient-to-br from-navy-light to-navy-dark p-4 shadow-2xl ring-1 ring-gold/30">
-          <div class="flex h-full flex-col items-center justify-center gap-3 rounded-[1.5rem] border border-white/5 text-center">
-            <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gold/20 text-2xl text-gold">▲</span>
-            <p class="font-[var(--font-heading)] text-lg font-bold text-white">Athletik Hub</p>
-            <p class="px-4 text-xs text-cream/60">Ta progression, séance après séance.</p>
-          </div>
-        </div>
+        <Image
+          src={appMockup}
+          alt="L'application Athletik Hub : programme Vertical Dunk, à côté du livre"
+          class="w-full max-w-md rounded-2xl shadow-2xl shadow-black/40"
+          widths={[400, 600, 800]}
+          sizes="(max-width: 1024px) 100vw, 40vw"
+          loading="lazy"
+        />
       </div>
     </div>
   </section>

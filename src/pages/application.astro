@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE, PROGRAMS } from '../config/site';
+import appHero from '../assets/app-hero.jpg';
 
 const schema = {
   '@context': 'https://schema.org',
@@ -27,10 +29,11 @@ const features = [
   title="Athletik Hub : application de coaching pour explosivité et détente verticale"
   description="Athletik Hub accompagne les lecteurs du livre avec des programmes, tests et conseils pour développer leur détente verticale et leur explosivité."
   appendBrand={false}
+  ogImage="/athletikhub-og.jpg"
   schema={schema}
 >
   <!-- ===================== HERO ===================== -->
-  <section class="bg-navy py-16 text-white">
+  <section class="bg-navy pt-16 text-white">
     <div class="container-site max-w-3xl">
       <p class="eyebrow">L'application incluse avec le livre</p>
       <h1 class="display-section">
@@ -45,6 +48,17 @@ const features = [
         <a href="/livre" class="btn-gold">Découvrir le livre pour accéder à l'expérience complète →</a>
         <a href="#fonctionnement" class="btn-outline">Voir comment ça marche →</a>
       </div>
+    </div>
+    <!-- Visuel marketing de l'app (3 écrans). -->
+    <div class="container-site mt-12">
+      <Image
+        src={appHero}
+        alt="Athletik Hub : aperçu de l'application — programme Vertical Dunk, profil et progression"
+        class="w-full rounded-t-2xl shadow-2xl shadow-black/40"
+        widths={[640, 1024, 1456]}
+        sizes="(max-width: 1400px) 100vw, 1400px"
+        loading="eager"
+      />
     </div>
   </section>
 
