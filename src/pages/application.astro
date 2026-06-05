@@ -33,7 +33,7 @@ const features = [
   schema={schema}
 >
   <!-- ===================== HERO ===================== -->
-  <section class="bg-navy pt-16 text-white">
+  <section class="bg-navy pt-16 pb-20 text-white">
     <div class="container-site max-w-3xl">
       <p class="eyebrow">L'application incluse avec le livre</p>
       <h1 class="display-section">
@@ -49,16 +49,27 @@ const features = [
         <a href="#fonctionnement" class="btn-outline">Voir comment ça marche →</a>
       </div>
     </div>
-    <!-- Visuel marketing de l'app (3 écrans). -->
+
+    <!-- Visuel marketing de l'app (3 écrans), harmonisé avec le navy du site.
+         On garde l'image sombre, mais on fond le noir vers le navy du site
+         (mix-blend lighten) sans toucher au gold ni au blanc. -->
     <div class="container-site mt-12">
-      <Image
-        src={appHero}
-        alt="Athletik Hub : aperçu de l'application — programme Vertical Dunk, profil et progression"
-        class="w-full rounded-t-2xl shadow-2xl shadow-black/40"
-        widths={[640, 1024, 1456]}
-        sizes="(max-width: 1400px) 100vw, 1400px"
-        loading="eager"
-      />
+      <figure class="relative overflow-hidden rounded-2xl shadow-xl shadow-black/30 ring-1 ring-gold/15">
+        <Image
+          src={appHero}
+          alt="Athletik Hub : aperçu de l'application — programme Vertical Dunk, profil et progression"
+          class="block w-full"
+          widths={[640, 1024, 1456]}
+          sizes="(max-width: 1400px) 100vw, 1400px"
+          loading="eager"
+        />
+        <!-- Le noir du mockup remonte vers le navy du site ; gold et blanc préservés. -->
+        <div class="pointer-events-none absolute inset-0 bg-navy mix-blend-lighten"></div>
+        <!-- Léger voile d'unification (adoucit le contraste). -->
+        <div class="pointer-events-none absolute inset-0 bg-navy/12"></div>
+        <!-- Fondu bas vers le navy de la section (transition propre, pas de coupure). -->
+        <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy via-navy/50 to-transparent"></div>
+      </figure>
     </div>
   </section>
 
