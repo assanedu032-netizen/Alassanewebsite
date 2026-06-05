@@ -194,16 +194,20 @@ const schema = [
         </div>
       </div>
 
-      <!-- Visuel réel : le livre + l'application Athletik Hub -->
+      <!-- Visuel réel : le livre + l'application Athletik Hub (harmonisé au navy) -->
       <div class="flex justify-center">
-        <Image
-          src={appLivreApp}
-          alt="Le livre Les Secrets de la Détente Verticale et l'application Athletik Hub"
-          class="w-full max-w-xl rounded-2xl shadow-2xl shadow-black/40"
-          widths={[400, 700, 1000]}
-          sizes="(max-width: 1024px) 100vw, 50vw"
-          loading="lazy"
-        />
+        <figure class="relative w-full max-w-xl overflow-hidden rounded-2xl shadow-xl shadow-black/30 ring-1 ring-gold/15">
+          <Image
+            src={appLivreApp}
+            alt="Le livre Les Secrets de la Détente Verticale et l'application Athletik Hub"
+            class="block w-full"
+            widths={[400, 700, 1000]}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            loading="lazy"
+          />
+          <div class="pointer-events-none absolute inset-0 bg-navy mix-blend-lighten"></div>
+          <div class="pointer-events-none absolute inset-0 bg-navy/12"></div>
+        </figure>
       </div>
     </div>
   </section>

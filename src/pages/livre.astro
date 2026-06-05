@@ -256,16 +256,20 @@ const parts = [
         <a href="/application" class="btn-outline mt-7">Découvrir l'application incluse →</a>
       </div>
 
-      <!-- Mockup app réel (écran de l'app + livre) -->
+      <!-- Mockup app réel (harmonisé au navy) -->
       <div class="flex justify-center">
-        <Image
-          src={appMockup}
-          alt="L'application Athletik Hub : programme Vertical Dunk, à côté du livre"
-          class="w-full max-w-md rounded-2xl shadow-2xl shadow-black/40"
-          widths={[400, 600, 800]}
-          sizes="(max-width: 1024px) 100vw, 40vw"
-          loading="lazy"
-        />
+        <figure class="relative w-full max-w-md overflow-hidden rounded-2xl shadow-xl shadow-black/30 ring-1 ring-gold/15">
+          <Image
+            src={appMockup}
+            alt="L'application Athletik Hub : programme Vertical Dunk, à côté du livre"
+            class="block w-full"
+            widths={[400, 600, 800]}
+            sizes="(max-width: 1024px) 100vw, 40vw"
+            loading="lazy"
+          />
+          <div class="pointer-events-none absolute inset-0 bg-navy mix-blend-lighten"></div>
+          <div class="pointer-events-none absolute inset-0 bg-navy/12"></div>
+        </figure>
       </div>
     </div>
   </section>
