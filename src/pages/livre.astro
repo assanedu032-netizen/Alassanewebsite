@@ -25,14 +25,16 @@ const schema = {
       name: 'Édition Kindle',
       price: '39',
       priceCurrency: 'EUR',
-      availability: 'https://schema.org/PreOrder',
+      availability: 'https://schema.org/InStock',
+      url: BOOK.amazon,
     },
     {
       '@type': 'Offer',
       name: 'Édition Papier',
       price: '69',
       priceCurrency: 'EUR',
-      availability: 'https://schema.org/PreOrder',
+      availability: 'https://schema.org/InStock',
+      url: BOOK.amazon,
     },
   ],
 };
@@ -154,17 +156,14 @@ const parts = [
           </p>
         </div>
 
-        <!-- Boutons d'achat — mode « Bientôt disponible » (TODO: liens Amazon KDP) -->
+        <!-- Achat sur Amazon (Kindle + papier sur la même fiche). -->
         <div class="mt-7 flex flex-col gap-3 sm:flex-row">
-          <a href={BOOK.amazonKindle} class="btn-soon" aria-disabled="true">
-            Bientôt disponible — Kindle {BOOK.priceKindle}
-          </a>
-          <a href={BOOK.amazonPaper} class="btn-soon" aria-disabled="true">
-            Bientôt disponible — Papier {BOOK.pricePaper}
+          <a href={BOOK.amazon} target="_blank" rel="noopener noreferrer" class="btn-gold">
+            Acheter sur Amazon →
           </a>
         </div>
         <p class="mt-3 text-sm text-navy/55">
-          Athletik Hub inclus dans les deux versions.
+          Kindle {BOOK.priceKindle} · Papier {BOOK.pricePaper} — Athletik Hub inclus dans les deux versions.
         </p>
       </div>
     </div>
@@ -366,16 +365,16 @@ const parts = [
           <p class="font-[var(--font-heading)] text-2xl font-bold text-navy">Kindle</p>
           <p class="mt-1 text-3xl font-bold text-gold">{BOOK.priceKindle}</p>
           <p class="mt-3 text-sm text-navy/70">Accès immédiat + Athletik Hub inclus</p>
-          <a href={BOOK.amazonKindle} class="btn-soon mt-6 w-full" aria-disabled="true">
-            Bientôt disponible
+          <a href={BOOK.amazon} target="_blank" rel="noopener noreferrer" class="btn-gold mt-6 w-full">
+            Acheter sur Amazon →
           </a>
         </div>
         <div class="rounded-2xl border border-navy/10 bg-cream/50 p-8">
           <p class="font-[var(--font-heading)] text-2xl font-bold text-navy">Papier</p>
           <p class="mt-1 text-3xl font-bold text-gold">{BOOK.pricePaper}</p>
           <p class="mt-3 text-sm text-navy/70">Livre physique + Athletik Hub inclus</p>
-          <a href={BOOK.amazonPaper} class="btn-soon mt-6 w-full" aria-disabled="true">
-            Bientôt disponible
+          <a href={BOOK.amazon} target="_blank" rel="noopener noreferrer" class="btn-gold mt-6 w-full">
+            Acheter sur Amazon →
           </a>
         </div>
       </div>

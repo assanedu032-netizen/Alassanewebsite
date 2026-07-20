@@ -38,9 +38,8 @@ export const BOOK = {
   programs: 6,
   priceKindle: '39 €',
   pricePaper: '69 €',
-  // TODO: liens Amazon KDP (Kindle + Papier)
-  amazonKindle: '#',
-  amazonPaper: '#',
+  // Fiche Amazon (Kindle + papier sur la même page produit).
+  amazon: 'https://amzn.eu/d/0fN500rk',
 } as const;
 
 /** Les 6 programmes Athletik Hub (FIGÉ — CLAUDE.md §6) */
