@@ -61,13 +61,46 @@ const parts = [
     body: 'Conseils de coach, annexes, glossaire, bibliographie scientifique.',
   },
 ];
+
+const faq = [
+  {
+    q: 'Comment accéder à Athletik Hub après l\'achat ?',
+    a: "Tu reçois tes accès par email dans les minutes qui suivent ta commande. Athletik Hub est inclus avec la version Kindle comme avec la version papier.",
+  },
+  {
+    q: 'Quelle version choisir : Kindle ou papier ?',
+    a: "Les deux incluent Athletik Hub. Le Kindle (39 €) te donne un accès immédiat ; le papier (69 €) est le livre physique, avec livraison internationale via Amazon. Choisis selon ta préférence de lecture.",
+  },
+  {
+    q: 'Le livre convient-il aux débutants ?',
+    a: "Oui. Il explique la logique du saut depuis les bases, puis propose 6 programmes selon ton profil — dont un pensé pour bien démarrer sans se blesser.",
+  },
+  {
+    q: 'Faut-il beaucoup de matériel ?',
+    a: "Non. Les programmes s'adaptent : tu peux progresser avec peu de matériel, en salle comme en extérieur. L'important, c'est la méthode et la régularité.",
+  },
+  {
+    q: 'En combien de temps voit-on des résultats ?',
+    a: "Ça dépend de ton niveau de départ, de ta morphologie et de ta régularité. Certains sentent une différence en quelques semaines ; une vraie transformation demande plusieurs mois de travail structuré. Aucun résultat n'est garanti — c'est du travail, pas de la magie.",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 
 <BaseLayout
   title="Livre détente verticale : Les Secrets de la Détente Verticale"
   description="Un livre complet pour améliorer ta détente verticale, comprendre la science du saut et suivre 6 programmes avec Athletik Hub inclus."
   appendBrand={false}
-  schema={schema}
+  schema={[schema, faqSchema]}
 >
   <!-- ===================== BEFORE ===================== -->
   <section class="bg-navy py-20 text-white">
@@ -165,6 +198,24 @@ const parts = [
         <p class="mt-3 text-sm text-navy/55">
           Kindle {BOOK.priceKindle} · Papier {BOOK.pricePaper} — Athletik Hub inclus dans les deux versions.
         </p>
+        <!-- Réassurance (factuel). -->
+        <ul class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs text-navy/60">
+          {
+            [
+              'Paiement sécurisé via Amazon',
+              'Kindle & papier',
+              'Livraison internationale',
+              'Athletik Hub inclus',
+            ].map((item) => (
+              <li class="flex items-center gap-1.5">
+                <svg class="h-4 w-4 flex-none text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
   </section>
@@ -315,6 +366,35 @@ const parts = [
           }
         </ul>
       </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="bg-white py-20">
+    <div class="container-site max-w-3xl">
+      <div class="text-center">
+        <p class="eyebrow">Questions fréquentes</p>
+        <h2 class="text-3xl font-bold text-navy sm:text-4xl">Tout ce que tu te demandes</h2>
+      </div>
+      <div class="mt-10 divide-y divide-navy/10">
+        {
+          faq.map((item) => (
+            <details class="group py-4">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-navy [&::-webkit-details-marker]:hidden">
+                <span>{item.q}</span>
+                <svg class="h-5 w-5 flex-none text-gold transition-transform duration-200 group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14" />
+                </svg>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-navy/70">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
+      <p class="mt-8 text-center text-sm text-navy/60">
+        Une autre question ?
+        <a href="/contact" class="font-semibold text-gold-dark underline">Écris-moi</a>, je réponds sous 24-48h.
+      </p>
     </div>
   </section>
 

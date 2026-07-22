@@ -94,6 +94,16 @@ const fullTitle =
     <Footer />
     {showQuiz && <QuizPopup client:idle />}
 
+    {/* Formulaire caché : permet à Netlify de détecter le lead « quiz-lead »
+        (le popup React envoie les données ici via fetch). */}
+    <form name="quiz-lead" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="email" name="email" />
+      <input type="text" name="programme" />
+      <input type="text" name="objectif" />
+      <input type="text" name="niveau" />
+      <input name="bot-field" />
+    </form>
+
     <script>
       document.addEventListener('click', (e) => {
         const target = e.target as HTMLElement;
