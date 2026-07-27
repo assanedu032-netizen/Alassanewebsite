@@ -262,7 +262,7 @@ export default function QuizPopup() {
           <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
             Athletik Hub
           </p>
-          <h2 id="quiz-title" className="pr-8 font-serif text-xl font-bold" style={{ fontFamily: 'Georgia, serif' }}>
+          <h2 id="quiz-title" className="pr-8 font-serif text-xl font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
             {result ? 'Ton programme recommandé' : 'Quel programme est vraiment fait pour toi ?'}
           </h2>
           {/* Barre de progression */}
@@ -299,7 +299,7 @@ export default function QuizPopup() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-navy" style={{ fontFamily: 'Georgia, serif' }}>
+              <h3 className="text-lg font-bold text-navy" style={{ fontFamily: 'var(--font-heading)' }}>
                 Ton programme est prêt.
               </h3>
               <p className="mx-auto mt-2 max-w-sm text-sm text-navy/70">
@@ -339,7 +339,7 @@ export default function QuizPopup() {
               </p>
               <h3
                 className="mb-4 text-lg font-bold text-navy"
-                style={{ fontFamily: 'Georgia, serif' }}
+                style={{ fontFamily: 'var(--font-heading)' }}
               >
                 {QUESTIONS[step].question}
               </h3>
@@ -380,7 +380,7 @@ export default function QuizPopup() {
                 </svg>
               </div>
               <p className="text-sm text-navy/60">Ton profil correspond à</p>
-              <h3 className="mt-1 text-2xl font-bold text-navy" style={{ fontFamily: 'Georgia, serif' }}>
+              <h3 className="mt-1 text-2xl font-bold text-navy" style={{ fontFamily: 'var(--font-heading)' }}>
                 {program.name}
               </h3>
               <p className="mt-1 text-sm font-medium text-gold-dark">{program.tagline}</p>
