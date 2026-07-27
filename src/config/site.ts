@@ -31,6 +31,9 @@ export const SOCIALS = {
   tiktok: '#',
 } as const;
 
+/** Lien vers l'application Athletik Hub (à intégrer où tu veux). */
+export const ATHLETIK_HUB_URL = 'https://athletikfondation.netlify.app/';
+
 export const BOOK = {
   title: 'Les Secrets de la Détente Verticale',
   pages: 378,
