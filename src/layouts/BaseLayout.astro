@@ -41,12 +41,6 @@ const fullTitle =
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Active les animations de scroll avant le 1er paint (évite tout flash).
-         Si ce script ne s'exécute pas, le contenu reste visible (sans animation). -->
-    <script is:inline>
-      document.documentElement.classList.add('reveal-on');
-    </script>
-
     <!-- SEO de base -->
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
@@ -120,34 +114,6 @@ const fullTitle =
         const disabled = target?.closest('a[aria-disabled="true"]');
         if (disabled) e.preventDefault();
       });
-    </script>
-
-    <script>
-      // Reveal au scroll : révèle chaque bloc de section quand il entre dans le viewport.
-      (() => {
-        const targets = document.querySelectorAll('main .container-site, main .reveal');
-        const showAll = () => targets.forEach((el) => el.classList.add('is-visible'));
-
-        // Fallback : pas d'IntersectionObserver → tout afficher immédiatement.
-        if (!('IntersectionObserver' in window)) return showAll();
-
-        try {
-          const io = new IntersectionObserver(
-            (entries, obs) => {
-              for (const entry of entries) {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add('is-visible');
-                  obs.unobserve(entry.target);
-                }
-              }
-            },
-            { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
-          );
-          targets.forEach((el) => io.observe(el));
-        } catch {
-          showAll();
-        }
-      })();
     </script>
   </body>
 </html>
