@@ -15,19 +15,10 @@
   --color-gold-dark: #a98a3c;
   --color-cream: #f5f3ee;
 
-  /*
-    Polices
-    --font-heading : police des TITRES — point de swap unique.
-    Pour changer toutes les titres du site, il suffit de modifier cette ligne
-    (et de charger la police dans BaseLayout). Base : Bebas Neue (condensé sportif,
-    proche de la couverture du livre). Remplacer par la police exacte une fois connue.
-  */
   --font-heading: 'Oswald', 'Arial Narrow', sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Police corps : Inter chargée localement via fontsource-like CDN fallback.
-   On reste sobre : Inter en woff2 préchargé dans le <head> du layout. */
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -38,6 +29,8 @@
     font-family: var(--font-body);
     color: var(--color-navy);
     background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1,
@@ -51,7 +44,6 @@
     font-weight: 600;
   }
 
-  /* Gros titres : MAJUSCULES + ITALIQUE gras — look « broadcast sportif ». */
   h1,
   h2 {
     text-transform: uppercase;
@@ -59,57 +51,54 @@
     font-weight: 700;
   }
 
-  /* Focus visible accessible et cohérent avec la marque */
   :focus-visible {
     outline: 2px solid var(--color-gold);
     outline-offset: 2px;
   }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: var(--color-navy);
+  }
+
+  img {
+    image-rendering: auto;
+  }
 }
 
 @layer components {
-  /* Bouton CTA principal — or arrondi */
   .btn-gold {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 font-semibold text-navy transition-all duration-200 hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 font-semibold text-navy shadow-lg shadow-gold/25 transition-all duration-300 hover:bg-gold-light hover:shadow-xl hover:shadow-gold/30 hover:-translate-y-0.5 active:scale-[0.97] active:shadow-md;
   }
 
-  /* Bouton secondaire — contour or sur fond sombre */
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-gold px-6 py-3 font-semibold text-gold transition-all duration-200 hover:bg-gold hover:text-navy;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-gold px-7 py-3.5 font-semibold text-gold transition-all duration-300 hover:bg-gold hover:text-navy hover:-translate-y-0.5;
   }
 
-  /* Bouton désactivé / bientôt disponible */
   .btn-soon {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-navy-light px-6 py-3 font-semibold text-cream/80 ring-1 ring-inset ring-gold/40 cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-navy-light px-7 py-3.5 font-semibold text-cream/80 ring-1 ring-inset ring-gold/40 cursor-not-allowed;
   }
 
-  /* Conteneur de section standard — large sur desktop pour limiter le vide sur
-     les côtés. Les textes longs gardent leur propre largeur lisible (max-w-2xl/3xl). */
   .container-site {
     @apply mx-auto w-full max-w-[1400px] px-5 sm:px-6 lg:px-8;
   }
 
-  /* Surtitre doré en petites capitales */
   .eyebrow {
     @apply mb-3 inline-block text-sm font-semibold uppercase tracking-[0.18em] text-gold;
   }
 
-  /* ===== Typo XXL / statements ===== */
-
-  /* Titre hero géant, fluide selon l'écran. */
   .display-hero {
-    font-size: clamp(3rem, 8.5vw, 6.5rem);
+    font-size: clamp(2.75rem, 8vw, 6rem);
     line-height: 1.0;
     letter-spacing: 0.02em;
     word-spacing: 0.06em;
   }
 
-  /* Grand titre de section. */
   .display-section {
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-size: clamp(2.25rem, 5.5vw, 4.5rem);
     line-height: 1.02;
   }
 
-  /* Chiffre/statement géant (ex. « 56 → 88 CM »). */
   .stat-xxl {
     font-family: var(--font-heading);
     font-size: clamp(3.5rem, 12vw, 9rem);
@@ -120,4 +109,34 @@
     color: var(--color-gold);
   }
 
+  .card {
+    @apply rounded-2xl border border-navy/8 bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-navy/8 hover:-translate-y-1;
+  }
+
+  .card-dark {
+    @apply rounded-2xl border border-white/8 bg-navy-light/50 p-7 transition-all duration-300 hover:border-gold/30 hover:shadow-lg hover:shadow-gold/5;
+  }
+
+  .section-padding {
+    @apply py-24 sm:py-28;
+  }
+
+  /* Divider doré décoratif */
+  .gold-line {
+    @apply mx-auto mt-5 h-0.5 w-16 rounded-full bg-gold/40;
+  }
+}
+
+/* Animations d'apparition au scroll (opt-in via classe) */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE, SOCIALS } from '../config/site';
 import portrait from '../assets/alassane-portrait.jpg';
+import squatDay from '../assets/squat-day.jpg';
 
 const schema = {
   '@context': 'https://schema.org',
@@ -10,7 +11,7 @@ const schema = {
   name: 'Alassane Ndiaye',
   jobTitle: 'Coach spécialisé en détente verticale et explosivité',
   description:
-    "Coach spécialisé en détente verticale et explosivité, certifié ISSA, formé aux États-Unis avec des coachs NBA et NFL. Auteur de « Les Secrets de la Détente Verticale ».",
+    "Recalé à 14 ans. +32 cm de détente gagnés. 10 000 € investis en formations. Certification ISSA. 900+ athlètes coachés. Voilà d'où vient la méthode.",
   url: `${SITE.url}/a-propos`,
   sameAs: [SOCIALS.instagram],
   brand: {
@@ -45,28 +46,28 @@ const stats = [
 ---
 
 <BaseLayout
-  title="Alassane Ndiaye : coach détente verticale et explosivité"
-  description="Découvre le parcours d'Alassane Ndiaye, coach spécialisé en détente verticale, explosivité et performance athlétique."
+  title="Alassane Ndiaye — Coach détente verticale, auteur, ancien basketteur"
+  description="Recalé à 14 ans. +32 cm de détente gagnés. 10 000 € investis en formations. Certification ISSA. 900+ athlètes coachés. Voilà d'où vient la méthode."
   appendBrand={false}
   schema={schema}
 >
-  <!-- ===================== HOOK ===================== -->
-  <section class="bg-navy py-20 text-white">
-    <div class="container-site grid items-center gap-12 lg:grid-cols-2">
+  <!-- ===================== HERO ===================== -->
+  <section class="bg-navy section-padding text-white">
+    <div class="container-site grid items-center gap-14 lg:grid-cols-2">
       <div>
         <p class="eyebrow">Alassane Ndiaye · Coach détente verticale &amp; explosivité</p>
         <h1 class="display-section">
-          J'avais 14 ans. Moins d'1m60. Et on m'a dit que j'avais pas le profil.
+          J'avais 14 ans. Moins d'1m60. On m'a dit que j'avais pas le profil.
         </h1>
         <p class="mt-6 leading-relaxed text-cream/85">
           Ma première détection au club de Nanterre. Tout le monde faisait plus
           d'1m90. Moi ? Rien. Je suis rentré chez moi en pleurant de rage.
         </p>
         <blockquote class="mt-6 border-l-4 border-gold pl-5 italic text-cream/90">
-          Mon frère m'a dit une phrase qui m'a marqué à vie : « Les gens vraiment forts
-          n'ont pas besoin de détection. Si t'es pas fort là où tu es, tu le seras pas
-          en jouant avec des meilleurs que toi. »
+          « Les gens vraiment forts n'ont pas besoin de détection. Si t'es pas fort là où tu es,
+          tu le seras pas en jouant avec des meilleurs que toi. »
         </blockquote>
+        <p class="mt-3 text-sm text-cream/60">— Mon frère</p>
       </div>
       <div>
         <Image
@@ -82,50 +83,71 @@ const stats = [
   </section>
 
   <!-- ===================== LE PARCOURS ===================== -->
-  <section class="bg-white py-20">
-    <div class="container-site max-w-3xl">
-      <p class="eyebrow">Le parcours</p>
-      <h2 class="text-3xl font-bold text-navy sm:text-4xl">
-        4 ans. Des blessures. Plus de 10 000 €. Et 32 cm de plus.
-      </h2>
-      <p class="mt-6 leading-relaxed text-navy/75">
-        Au début, du matériel basique : une chaise, des escaliers, des sauts en
-        extérieur. Air Alert, une dizaine de programmes trouvés en ligne. Ça m'a
-        aidé. Et ça m'a blessé. Chaque douleur m'a appris quelque chose.
-      </p>
-      <p class="mt-4 leading-relaxed text-navy/75">
-        J'ai investi plus de 10 000 € en formations. Je suis parti aux États-Unis me
-        former en privé avec des coachs NBA et NFL. J'ai obtenu la certification ISSA.
-        Résultat : <strong class="text-navy">56 cm → 88 cm.</strong>
-      </p>
+  <section class="section-padding bg-white">
+    <div class="container-site grid items-center gap-14 lg:grid-cols-2">
+      <div>
+        <p class="eyebrow">Le parcours</p>
+        <h2 class="text-3xl font-bold text-navy sm:text-4xl">
+          4 ans. Des blessures. 10 000 €. Et 32 cm de plus.
+        </h2>
+        <p class="mt-6 leading-relaxed text-navy/75">
+          Au début : une chaise, des escaliers, des sauts en extérieur. Air Alert,
+          une dizaine de programmes trouvés en ligne. Ça m'a aidé. Et ça m'a blessé.
+          Chaque douleur m'a appris quelque chose.
+        </p>
+        <p class="mt-4 leading-relaxed text-navy/75">
+          J'ai fini par investir plus de 10 000 € en formations. Je suis parti aux
+          États-Unis me former en privé avec des coachs NBA et NFL. J'ai obtenu la
+          certification ISSA.
+        </p>
+        <p class="mt-4 text-lg font-semibold text-navy">
+          Résultat : <span class="text-gold-dark">56 cm → 88 cm.</span>
+        </p>
+        <p class="mt-4 leading-relaxed text-navy/75">
+          Ce n'est pas un don. C'est une construction.
+        </p>
+      </div>
+      <div>
+        <Image
+          src={squatDay}
+          alt="Alassane à l'entraînement — squat explosif en extérieur"
+          class="aspect-[4/5] w-full rounded-2xl object-cover shadow-xl shadow-navy/20 ring-1 ring-navy/10"
+          widths={[400, 700, 1000]}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          loading="lazy"
+        />
+      </div>
     </div>
   </section>
 
-  <!-- ===================== LA MISSION ===================== -->
-  <section class="bg-cream py-20">
+  <!-- ===================== POURQUOI CE LIVRE ===================== -->
+  <section class="section-padding bg-cream">
     <div class="container-site max-w-3xl">
       <p class="eyebrow">Pourquoi ce livre</p>
       <h2 class="text-3xl font-bold text-navy sm:text-4xl">Pourquoi ce livre existe.</h2>
-      <p class="mt-6 leading-relaxed text-navy/80">
-        L'information sur la détente verticale existe — mais elle est éparpillée,
+      <p class="mt-6 text-lg leading-relaxed text-navy/80">
+        L'information sur la détente verticale existe. Mais elle est éparpillée,
         contradictoire, mal expliquée. J'ai condensé 10 ans de recherche et de terrain
-        dans un système applicable dès aujourd'hui. Pour que tu n'aies pas à dépenser
-        10 000 € et 4 ans pour comprendre ce qui fonctionne vraiment.
+        dans un système applicable dès aujourd'hui.
+      </p>
+      <p class="mt-4 text-lg leading-relaxed text-navy/80">
+        Pour que tu n'aies pas à dépenser 10 000 € et 4 ans pour comprendre ce qui
+        fonctionne vraiment.
       </p>
     </div>
   </section>
 
   <!-- ===================== EN CHIFFRES ===================== -->
-  <section class="bg-navy py-20 text-white">
+  <section class="section-padding bg-navy text-white">
     <div class="container-site">
       <div class="mx-auto max-w-2xl text-center">
         <p class="eyebrow">En chiffres</p>
-        <h2 class="text-3xl font-bold sm:text-4xl">Le parcours en quelques données.</h2>
+        <h2 class="text-3xl font-bold sm:text-4xl">Le parcours en données.</h2>
       </div>
       <div class="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-3">
         {
           stats.map((stat) => (
-            <div class="rounded-2xl border border-white/10 bg-navy-light/40 p-6 text-center">
+            <div class="card-dark text-center">
               <p class="font-[var(--font-heading)] text-4xl leading-none text-gold sm:text-5xl lg:text-6xl">
                 {stat.value}
               </p>
@@ -134,11 +156,11 @@ const stats = [
           ))
         }
       </div>
-      <div class="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <div class="mt-14 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <a href="/livre" class="btn-gold">Découvrir le livre →</a>
         <a href="/application" class="btn-outline">Voir Athletik Hub →</a>
       </div>
-      <p class="mt-5 text-center text-sm text-cream/70">
+      <p class="mt-6 text-center text-sm text-cream/70">
         Envie de conseils concrets ?
         <a href="/blog" class="font-semibold text-gold underline">Lis le blog détente verticale</a>.
       </p>
