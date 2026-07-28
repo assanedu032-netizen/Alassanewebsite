@@ -39,10 +39,9 @@ export const BOOK = {
   pages: 378,
   parts: 4,
   programs: 6,
-  priceKindle: '39 €',
-  pricePaper: '69 €',
-  // Fiche Amazon (Kindle + papier sur la même page produit).
-  amazon: 'https://amzn.eu/d/0fN500rk',
+  priceKindle: '9,69 €',
+  pricePaper: '35,95 €',
+  amazon: 'https://amzn.eu/d/092iFpv4',
 } as const;
 
 /** Les 6 programmes Athletik Hub (FIGÉ — CLAUDE.md §6) */

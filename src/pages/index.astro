@@ -2,13 +2,12 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
-import { SITE, BOOK, SOCIALS } from '../config/site';
+import { SITE, BOOK, SOCIALS, ATHLETIK_HUB_URL } from '../config/site';
 import courtNight from '../assets/court-night.jpg';
 import squatDay from '../assets/squat-day.jpg';
 import appLivreApp from '../assets/app-livre-app.jpg';
 import VideoEmbed from '../components/VideoEmbed.astro';
 
-// Réseaux réels uniquement (on exclut les placeholders « # »).
 const sameAs = [SOCIALS.instagram, SOCIALS.youtube, SOCIALS.tiktok].filter(
   (u) => u && u !== '#',
 );
@@ -35,42 +34,58 @@ const schema = [
 ---
 
 <BaseLayout
-  title="Alassane Coaching — Détente verticale : livre & application"
-  description="Alassane Coaching : la méthode d'Alassane Ndiaye pour améliorer ta détente verticale et ton explosivité, avec le livre Les Secrets de la Détente Verticale et l'application Athletik Hub."
+  title="Alassane Coaching — Saute plus haut. Méthode, livre & application."
+  description="+32 cm de détente gagnés. 900+ athlètes coachés. La méthode complète pour basketteurs, volleyeurs et athlètes explosifs — livre + app Athletik Hub."
   appendBrand={false}
   schema={schema}
 >
   <!-- ===================== HERO ===================== -->
-  <section class="relative flex min-h-[72vh] items-center overflow-hidden bg-gradient-to-b from-navy-light via-navy to-navy-dark text-white">
+  <section class="relative flex min-h-[80vh] items-center overflow-hidden bg-gradient-to-b from-navy-light via-navy to-navy-dark text-white">
     <div
-      class="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-gold/10 blur-3xl"
+      class="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-gold/8 blur-[100px]"
       aria-hidden="true"
-    >
-    </div>
+    ></div>
+    <div
+      class="pointer-events-none absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-gold/5 blur-[80px]"
+      aria-hidden="true"
+    ></div>
 
-    <div class="container-site relative py-24">
+    <div class="container-site relative py-28">
       <div class="mx-auto max-w-4xl text-center">
-        <p class="eyebrow">Détente verticale · Explosivité · Basketball</p>
+        <p class="eyebrow">Pour basketteurs · volleyeurs · athlètes explosifs</p>
         <h1 class="display-hero">
-          Un athlète explosif,<br />ça ne naît pas.
-          <span class="text-gold">Ça se construit.</span>
+          Tu veux sauter plus haut.<br />
+          <span class="text-gold">Arrête de t'entraîner au hasard.</span>
         </h1>
         <p class="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-cream/85">
-          La méthode pour améliorer ta <strong class="text-white">détente verticale</strong> :
-          j'ai gagné <strong class="text-white">32 cm</strong> (de 56 à 88 cm) en construisant un
-          vrai système. Voici comment progresser sans t'entraîner au hasard.
+          J'ai gagné <strong class="text-white">32 cm</strong> de détente en construisant un
+          vrai système — pas en accumulant des programmes trouvés sur YouTube. Voilà la méthode.
         </p>
-        <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:justify-center">
-          <a href="/livre" class="btn-gold">Découvrir le livre →</a>
-          <button type="button" data-open-quiz class="btn-outline">
-            Trouver mon programme →
-          </button>
+        <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <a href={BOOK.amazon} target="_blank" rel="noopener noreferrer" class="btn-gold text-base">
+            Découvrir le livre · Kindle {BOOK.priceKindle} / Papier {BOOK.pricePaper} →
+          </a>
+          <a href="/bilan" class="btn-outline text-base">
+            Réserver mon bilan gratuit →
+          </a>
+        </div>
+        <div class="mt-5 flex justify-center gap-5 text-xs text-cream/50">
+          <span>✓ Athletik Hub inclus</span>
+          <span>✓ Paiement sécurisé Amazon</span>
+          <span>✓ Accès immédiat Kindle</span>
         </div>
       </div>
     </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce" aria-hidden="true">
+      <svg class="h-6 w-6 text-gold/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m19 9-7 7-7-7" />
+      </svg>
+    </div>
   </section>
 
-  <!-- ===================== BANDE CINÉMATIQUE (terrain, photo bien visible) ===================== -->
+  <!-- ===================== BANDE PHOTO + CHIFFRES ===================== -->
   <section class="relative bg-navy">
     <div class="relative h-[60vh] min-h-[440px] w-full overflow-hidden">
       <Image
@@ -81,41 +96,41 @@ const schema = [
         sizes="100vw"
         loading="eager"
       />
-      <!-- Dégradé léger : photo bien visible, juste un fondu en bas pour les chiffres. -->
-      <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/5 to-navy/30"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/10 to-navy/30"></div>
 
-      <!-- Badges chiffres réels (façon Garage Strength). -->
       <div class="absolute inset-x-0 bottom-0">
-        <div class="container-site flex flex-wrap items-end justify-center gap-x-12 gap-y-6 pb-9 text-center text-white drop-shadow-lg sm:gap-x-20">
-          <div>
-            <p class="font-[var(--font-heading)] text-4xl italic text-gold sm:text-5xl">900+</p>
-            <p class="mt-1 text-xs uppercase tracking-[0.18em] text-white">athlètes testés</p>
-          </div>
+        <div class="container-site flex flex-wrap items-end justify-center gap-x-12 gap-y-6 pb-10 text-center text-white drop-shadow-lg sm:gap-x-20">
           <div>
             <p class="font-[var(--font-heading)] text-4xl italic text-gold sm:text-5xl">+32 cm</p>
-            <p class="mt-1 text-xs uppercase tracking-[0.18em] text-white">de détente gagnés</p>
+            <p class="mt-1 text-xs uppercase tracking-[0.18em] text-white/90">ma progression perso · de 56 à 88 cm</p>
           </div>
           <div>
-            <p class="font-[var(--font-heading)] text-4xl italic text-gold sm:text-5xl">10 000 €</p>
-            <p class="mt-1 text-xs uppercase tracking-[0.18em] text-white">investis pour comprendre</p>
+            <p class="font-[var(--font-heading)] text-4xl italic text-gold sm:text-5xl">900+</p>
+            <p class="mt-1 text-xs uppercase tracking-[0.18em] text-white/90">athlètes coachés et testés</p>
+          </div>
+          <div>
+            <p class="font-[var(--font-heading)] text-4xl italic text-gold sm:text-5xl">10 ans</p>
+            <p class="mt-1 text-xs uppercase tracking-[0.18em] text-white/90">de terrain condensés dans un système</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== POURQUOI TU STAGNES ===================== -->
-  <section class="bg-white py-20">
+  <!-- ===================== PROBLÈME ===================== -->
+  <section class="section-padding bg-white">
     <div class="container-site">
       <div class="mx-auto max-w-3xl text-center">
         <p class="eyebrow">La vraie raison</p>
         <h2 class="text-3xl font-bold text-navy sm:text-4xl">
-          Pourquoi tu stagnes. Et comment tu arrêtes de stagner.
+          Tu travailles dur. Ta détente, elle bouge pas.
         </h2>
-        <p class="mt-4 text-navy/70">
-          Voici les 3 choses qui font la différence entre un athlète qui progresse
-          et un qui tourne en rond.
+        <p class="mt-5 text-navy/70">
+          Tu regardes des vidéos. Tu essaies un programme. Deux semaines. Rien. Tu en
+          cherches un autre. Même résultat. Et une pensée s'installe :
+          <em class="text-navy/90">« C'est peut-être ma génétique. C'est peut-être pas pour moi. »</em>
         </p>
+        <p class="mt-3 text-lg font-semibold text-navy">Non. Le problème, c'est autre chose.</p>
       </div>
 
       <div class="mt-14 grid gap-8 md:grid-cols-3">
@@ -123,22 +138,22 @@ const schema = [
           [
             {
               n: '1',
-              title: "Tu t'entraînes sans savoir ce que tu développes.",
-              body: "Squats, sauts, pliométrie, dans le désordre. Sans comprendre ce que chaque exercice développe vraiment, tu travailles fort pour des résultats aléatoires.",
+              title: "Tu empiles des exercices sans comprendre ce que tu développes.",
+              body: "Squats, sauts, élastiques, pliométrie — dans le désordre. Sans logique de périodisation, tu travailles fort pour des résultats aléatoires.",
             },
             {
               n: '2',
-              title: "Tu n'as pas de structure de périodisation.",
-              body: "Le corps s'adapte — c'est sa force et son problème. Sans progression structurée, il s'adapte au programme et arrête de progresser. C'est pour ça que tu stagnes après 3-4 semaines.",
+              title: "Ton corps s'adapte. Et tu t'en rends pas compte.",
+              body: "Après 3 à 4 semaines, il a intégré le stimulus. Il s'y est habitué. Il n'a plus aucune raison de progresser. C'est de la biologie — pas de la flemme.",
             },
             {
               n: '3',
-              title: 'Tu ne mesures pas ce qui compte.',
-              body: "Pas juste combien tu sautes : ta force explosive, ta triple extension, ton NPI. Ce que tu ne mesures pas, tu ne peux pas l'améliorer.",
+              title: 'Tu mesures pas ce qui compte vraiment.',
+              body: "Pas juste ta hauteur de saut — ta force explosive, ta triple extension, ton indice de réactivité. Ce que tu mesures pas, tu peux pas l'améliorer.",
             },
           ].map((item) => (
-            <div class="rounded-2xl border border-navy/10 bg-cream/40 p-7">
-              <span class="flex h-11 w-11 items-center justify-center rounded-full bg-navy font-[var(--font-heading)] text-lg font-bold text-gold">
+            <div class="card bg-cream/40">
+              <span class="flex h-12 w-12 items-center justify-center rounded-full bg-navy font-[var(--font-heading)] text-xl font-bold text-gold">
                 {item.n}
               </span>
               <h3 class="mt-5 text-lg font-bold text-navy">{item.title}</h3>
@@ -148,33 +163,33 @@ const schema = [
         }
       </div>
 
-      <div class="mt-12 text-center">
+      <div class="mt-14 text-center">
         <p class="text-navy/70">
           Ces 3 points, c'est la base de tout ce que tu trouveras dans le livre.
         </p>
-        <a href="/livre" class="btn-gold mt-5">Voir le système complet →</a>
-        <p class="mt-4 text-sm text-navy/60">
-          Ou commence à lire :
-          <a href="/blog" class="font-semibold text-gold-dark underline">le blog détente verticale</a>.
-        </p>
+        <a href="/livre" class="btn-gold mt-6">Voir le système complet →</a>
       </div>
     </div>
   </section>
 
-  <!-- ===================== BRIDGE — LE SYSTÈME ===================== -->
-  <section class="bg-navy py-20 text-white">
-    <div class="container-site grid items-center gap-12 lg:grid-cols-2">
+  <!-- ===================== SOLUTION — LE SYSTÈME ===================== -->
+  <section class="section-padding bg-navy text-white">
+    <div class="container-site grid items-center gap-14 lg:grid-cols-2">
       <div>
         <p class="eyebrow">Le système complet</p>
         <h2 class="text-3xl font-bold sm:text-4xl">
-          Un livre. Une app. Un système complet.
+          Un livre. Une app. Un seul système.
         </h2>
+        <p class="mt-6 leading-relaxed text-cream/80">
+          Pas deux produits séparés — un écosystème pensé ensemble. Le livre te donne la
+          compréhension. Athletik Hub te donne le cadre pour agir chaque jour.
+        </p>
         <ul class="mt-8 space-y-4">
           {
             [
-              `${BOOK.pages} pages de science, de méthodes et de programmes.`,
-              `${BOOK.programs} programmes prêts à l'emploi selon ton profil.`,
-              'Athletik Hub — l\'app pour tracker ta progression en temps réel.',
+              `${BOOK.pages} pages de science vulgarisée, de méthodes et de programmes.`,
+              `Athletik Hub — tracker ta progression séance par séance, accéder aux vidéos, faire tes tests.`,
+              `${BOOK.programs} programmes identifiés selon ton profil via le Bilan Athletic gratuit.`,
             ].map((line) => (
               <li class="flex items-start gap-3">
                 <svg class="mt-0.5 h-6 w-6 flex-none text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -185,18 +200,14 @@ const schema = [
             ))
           }
         </ul>
-        <p class="mt-6 text-lg font-semibold text-white">
-          Tout ce qu'il te faut. Dans un seul endroit.
-        </p>
-        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
           <a href="/livre" class="btn-gold">Découvrir le livre →</a>
-          <a href="/application" class="btn-outline">Découvrir Athletik Hub →</a>
+          <a href={ATHLETIK_HUB_URL} target="_blank" rel="noopener noreferrer" class="btn-outline">Accéder à Athletik Hub →</a>
         </div>
       </div>
 
-      <!-- Visuel réel : le livre + l'application Athletik Hub (harmonisé au navy) -->
       <div class="flex justify-center">
-        <figure class="relative w-full max-w-xl overflow-hidden rounded-2xl shadow-xl shadow-black/30 ring-1 ring-gold/15">
+        <figure class="relative w-full max-w-xl overflow-hidden rounded-2xl shadow-2xl shadow-black/30 ring-1 ring-gold/15">
           <Image
             src={appLivreApp}
             alt="Le livre Les Secrets de la Détente Verticale et l'application Athletik Hub"
@@ -213,13 +224,9 @@ const schema = [
   </section>
 
   <!-- ===================== EN VIDÉO ===================== -->
-  <section class="bg-navy-dark py-20 text-white">
+  <section class="section-padding bg-navy-dark text-white">
     <div class="container-site max-w-4xl text-center">
-      <p class="eyebrow">En vidéo</p>
-      <h2 class="display-section">Regarde, plutôt que de lire.</h2>
-      <p class="mx-auto mt-4 max-w-xl text-cream/80">
-        Une démonstration vaut mille mots. Découvre la méthode en mouvement.
-      </p>
+      <h2 class="display-section">Regarde plutôt que de lire.</h2>
       <div class="mt-10">
         <VideoEmbed
           title="Présentation — Alassane Coaching"
@@ -229,23 +236,32 @@ const schema = [
     </div>
   </section>
 
-  <!-- ===================== PREUVE / HISTOIRE ===================== -->
-  <section class="bg-cream py-20">
-    <div class="container-site grid items-center gap-12 lg:grid-cols-2">
+  <!-- ===================== HISTOIRE / CRÉDIBILITÉ ===================== -->
+  <section class="section-padding bg-cream">
+    <div class="container-site grid items-center gap-14 lg:grid-cols-2">
       <div class="order-2 lg:order-1">
-        <p class="eyebrow">Mon histoire</p>
-        <h2 class="text-3xl font-bold text-navy sm:text-4xl">Voilà le chemin.</h2>
-        <blockquote class="mt-6 border-l-4 border-gold pl-5 text-lg italic text-navy/80">
-          « J'avais 14 ans. Moins d'1m60. On m'a dit que j'avais pas le profil.
-          Alors j'ai décidé de prouver le contraire. »
-        </blockquote>
+        <p class="eyebrow">Mon parcours</p>
+        <h2 class="text-3xl font-bold text-navy sm:text-4xl">
+          14 ans. Moins d'1m60. Recalé à la détection de Nanterre.
+        </h2>
         <p class="mt-6 leading-relaxed text-navy/75">
-          4 ans d'entraînement. Des blessures. Plus de 10 000 € investis. Formation
-          privée aux États-Unis avec des coachs NBA et NFL. Certification ISSA.
-          900+ athlètes testés.
+          On m'a dit que j'avais pas le profil. Je suis rentré chez moi en pleurant de rage.
+          Alors j'ai décidé de construire le mien.
         </p>
-        <a href="/a-propos" class="btn-outline mt-7 !border-navy !text-navy hover:!bg-navy hover:!text-cream">
-          Découvrir mon parcours →
+        <p class="mt-4 leading-relaxed text-navy/75">
+          4 ans d'entraînement. Des blessures. Plus de 10 000 € investis en formations.
+          Un déplacement aux États-Unis pour me former en privé avec des coachs NBA et NFL.
+          Certification ISSA. 900+ athlètes ensuite.
+        </p>
+        <p class="mt-4 leading-relaxed text-navy/75">
+          Résultat : <strong class="text-navy">56 cm → 88 cm.</strong> +32 cm. En partant de rien.
+        </p>
+        <p class="mt-5 text-navy/70">
+          Ce livre, c'est ce que j'aurais voulu avoir à 14 ans — pour éviter les erreurs,
+          le temps perdu, et les 10 000 € brûlés.
+        </p>
+        <a href="/a-propos" class="btn-outline mt-8 !border-navy !text-navy hover:!bg-navy hover:!text-cream">
+          Mon histoire complète →
         </a>
       </div>
 
@@ -264,7 +280,7 @@ const schema = [
 
   <!-- ===================== NEWSLETTER ===================== -->
   <Newsletter
-    title="Reçois mes conseils sur la détente verticale."
-    subtitle="Des méthodes concrètes, basées sur le terrain. Directement dans ta boîte mail."
+    title="Des méthodes concrètes. Directement dans ta boîte."
+    subtitle="Pas de bullshit. Pas de spam. Juste ce que j'applique sur le terrain — et ce qui fonctionne vraiment."
   />
 </BaseLayout>

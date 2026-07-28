@@ -5,47 +5,47 @@ import { SOCIALS } from '../config/site';
 const faq = [
   {
     q: 'Comment accéder à Athletik Hub après l\'achat ?',
-    a: 'Tu reçois un email avec tes accès dans les minutes suivant ta commande.',
+    a: 'Tu reçois un email avec tes accès dans les minutes suivant ta commande. Kindle comme papier — les deux l\'incluent.',
   },
   {
     q: 'Le livre papier est-il disponible partout ?',
-    a: 'Oui, via Amazon KDP, livraison internationale.',
+    a: 'Oui, via Amazon KDP. Livraison internationale.',
   },
   {
     q: 'J\'ai un problème avec ma commande.',
-    a: 'Utilise le formulaire, on règle ça rapidement.',
+    a: 'Utilise le formulaire ci-dessus. On règle ça rapidement.',
+  },
+  {
+    q: 'Je veux faire un bilan athlétique.',
+    a: 'Réserve directement sur la page Bilan — c\'est gratuit et sans engagement.',
   },
 ];
-
 ---
 
 <BaseLayout
-  title="Contact"
-  description="Une question sur ta commande, l'accès Athletik Hub ou un programme ? Écris à Alassane, réponse sous 24-48h."
+  title="Contact — Alassane Coaching"
+  description="Une question sur ta commande, l'accès Athletik Hub ou un programme ? Écris à Alassane. Réponse personnelle sous 24-48h."
   showQuiz={false}
 >
-  <section class="bg-navy py-16 text-white">
+  <section class="bg-navy section-padding text-white">
     <div class="container-site max-w-3xl text-center">
       <p class="eyebrow">Contact</p>
-      <h1 class="text-3xl font-bold sm:text-4xl">Une question ? Je réponds personnellement.</h1>
-      <p class="mt-5 text-cream/85">
-        Commande, accès Athletik Hub, question sur un programme — écris-moi.
-        Je réponds sous 24-48h.
+      <h1 class="display-section">
+        Une question ? Je réponds personnellement.
+      </h1>
+      <p class="mt-6 text-lg text-cream/85">
+        Commande, accès Athletik Hub, question sur un programme, ou juste envie d'échanger —
+        écris-moi. Je réponds sous 24-48h.
       </p>
     </div>
   </section>
 
-  <section class="bg-white py-16">
-    <div class="container-site grid gap-12 lg:grid-cols-5">
+  <section class="section-padding bg-white">
+    <div class="container-site grid gap-14 lg:grid-cols-5">
       <!-- Formulaire -->
       <div class="lg:col-span-3">
-        <!--
-          Message de confirmation. Le site étant statique, on ne peut pas lire
-          ?success=true au build : on rend le banner masqué et un script l'affiche
-          après la redirection Netlify (action="/contact?success=true").
-        -->
-        <div id="contact-success" hidden class="mb-6 rounded-xl border border-gold/50 bg-cream p-5">
-          <p class="font-semibold text-navy">Merci, ton message est bien parti ✅</p>
+        <div id="contact-success" hidden class="mb-8 rounded-xl border border-gold/50 bg-cream p-6">
+          <p class="font-semibold text-navy">Merci, ton message est bien parti.</p>
           <p class="mt-1 text-sm text-navy/70">
             Je te réponds personnellement sous 24-48h.
           </p>
@@ -60,55 +60,49 @@ const faq = [
           }
         </script>
 
-        <!--
-          Formulaire Netlify Forms.
-          - data-netlify="true" : détection automatique au build.
-          - honeypot "bot-field" : anti-spam (recommandation Netlify).
-          - action vers /contact?success=true pour le message de confirmation.
-        -->
         <form
           name="contact"
           method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
           action="/contact?success=true"
-          class="space-y-5"
+          class="space-y-6"
         >
           <input type="hidden" name="form-name" value="contact" />
           <p class="hidden">
             <label>Ne pas remplir si tu es humain : <input name="bot-field" /></label>
           </p>
 
-          <div class="grid gap-5 sm:grid-cols-2">
+          <div class="grid gap-6 sm:grid-cols-2">
             <div>
-              <label for="prenom" class="mb-1.5 block text-sm font-medium text-navy">Prénom</label>
+              <label for="prenom" class="mb-2 block text-sm font-medium text-navy">Prénom</label>
               <input
                 id="prenom"
                 name="prenom"
                 type="text"
                 required
-                class="w-full rounded-lg border border-navy/15 px-4 py-2.5 text-navy focus:border-gold focus:outline-none"
+                class="w-full rounded-xl border border-navy/12 bg-cream/30 px-4 py-3 text-navy transition-all duration-200 focus:border-gold focus:ring-2 focus:ring-gold/20 focus:outline-none"
               />
             </div>
             <div>
-              <label for="email" class="mb-1.5 block text-sm font-medium text-navy">Email</label>
+              <label for="email" class="mb-2 block text-sm font-medium text-navy">Email</label>
               <input
                 id="email"
                 name="email"
                 type="email"
                 required
-                class="w-full rounded-lg border border-navy/15 px-4 py-2.5 text-navy focus:border-gold focus:outline-none"
+                class="w-full rounded-xl border border-navy/12 bg-cream/30 px-4 py-3 text-navy transition-all duration-200 focus:border-gold focus:ring-2 focus:ring-gold/20 focus:outline-none"
               />
             </div>
           </div>
 
           <div>
-            <label for="sujet" class="mb-1.5 block text-sm font-medium text-navy">Sujet</label>
+            <label for="sujet" class="mb-2 block text-sm font-medium text-navy">Sujet</label>
             <select
               id="sujet"
               name="sujet"
               required
-              class="w-full rounded-lg border border-navy/15 bg-white px-4 py-2.5 text-navy focus:border-gold focus:outline-none"
+              class="w-full rounded-xl border border-navy/12 bg-cream/30 px-4 py-3 text-navy transition-all duration-200 focus:border-gold focus:ring-2 focus:ring-gold/20 focus:outline-none"
             >
               <option value="Commande">Commande</option>
               <option value="Athletik Hub">Athletik Hub</option>
@@ -118,13 +112,13 @@ const faq = [
           </div>
 
           <div>
-            <label for="message" class="mb-1.5 block text-sm font-medium text-navy">Message</label>
+            <label for="message" class="mb-2 block text-sm font-medium text-navy">Message</label>
             <textarea
               id="message"
               name="message"
               rows="5"
               required
-              class="w-full rounded-lg border border-navy/15 px-4 py-2.5 text-navy focus:border-gold focus:outline-none"
+              class="w-full rounded-xl border border-navy/12 bg-cream/30 px-4 py-3 text-navy transition-all duration-200 focus:border-gold focus:ring-2 focus:ring-gold/20 focus:outline-none"
             ></textarea>
           </div>
 
@@ -135,28 +129,37 @@ const faq = [
       <!-- FAQ + réseaux -->
       <aside class="lg:col-span-2">
         <h2 class="font-[var(--font-heading)] text-xl font-bold text-navy">FAQ rapide</h2>
-        <div class="mt-5 space-y-5">
+        <div class="mt-6 space-y-4">
           {
             faq.map((item) => (
-              <div class="rounded-xl border border-navy/10 bg-cream/40 p-5">
+              <div class="rounded-xl border border-navy/8 bg-cream/40 p-5">
                 <p class="font-semibold text-navy">{item.q}</p>
                 <p class="mt-2 text-sm text-navy/70">{item.a}</p>
+                {item.q.includes('bilan') && (
+                  <a href="/bilan" class="mt-2 inline-block text-sm font-semibold text-gold-dark underline">
+                    Réserver un bilan →
+                  </a>
+                )}
               </div>
             ))
           }
         </div>
 
-        <h2 class="mt-8 font-[var(--font-heading)] text-xl font-bold text-navy">Réseaux</h2>
+        <h2 class="mt-10 font-[var(--font-heading)] text-xl font-bold text-navy">Retrouve-moi aussi ici</h2>
         <div class="mt-4 flex flex-wrap gap-3">
-          <a href={SOCIALS.instagram} target="_blank" rel="noopener noreferrer" class="rounded-full border border-navy/15 px-4 py-2 text-sm font-medium text-navy transition-colors hover:border-gold hover:text-gold">
+          <a href={SOCIALS.instagram} target="_blank" rel="noopener noreferrer" class="rounded-full border border-navy/12 px-5 py-2.5 text-sm font-medium text-navy transition-all duration-200 hover:border-gold hover:text-gold hover:shadow-md">
             Instagram @alassanecoaching
           </a>
-          <a href={SOCIALS.youtube} target="_blank" rel="noopener noreferrer" class="rounded-full border border-navy/15 px-4 py-2 text-sm font-medium text-navy transition-colors hover:border-gold hover:text-gold">
-            YouTube
-          </a>
-          <a href={SOCIALS.tiktok} target="_blank" rel="noopener noreferrer" class="rounded-full border border-navy/15 px-4 py-2 text-sm font-medium text-navy transition-colors hover:border-gold hover:text-gold">
-            TikTok
-          </a>
+          {SOCIALS.youtube !== '#' && (
+            <a href={SOCIALS.youtube} target="_blank" rel="noopener noreferrer" class="rounded-full border border-navy/12 px-5 py-2.5 text-sm font-medium text-navy transition-all duration-200 hover:border-gold hover:text-gold hover:shadow-md">
+              YouTube
+            </a>
+          )}
+          {SOCIALS.tiktok !== '#' && (
+            <a href={SOCIALS.tiktok} target="_blank" rel="noopener noreferrer" class="rounded-full border border-navy/12 px-5 py-2.5 text-sm font-medium text-navy transition-all duration-200 hover:border-gold hover:text-gold hover:shadow-md">
+              TikTok
+            </a>
+          )}
         </div>
       </aside>
     </div>
