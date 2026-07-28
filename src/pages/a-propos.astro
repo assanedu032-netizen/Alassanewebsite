@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE, SOCIALS } from '../config/site';
+import { SITE, SOCIALS, ATHLETIK_HUB_URL } from '../config/site';
 import portrait from '../assets/alassane-portrait.jpg';
 import squatDay from '../assets/squat-day.jpg';
 
@@ -158,7 +158,7 @@ const stats = [
       </div>
       <div class="mt-14 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <a href="/livre" class="btn-gold">Découvrir le livre →</a>
-        <a href="/application" class="btn-outline">Voir Athletik Hub →</a>
+        <a href={ATHLETIK_HUB_URL} target="_blank" rel="noopener noreferrer" class="btn-outline">Accéder à Athletik Hub →</a>
       </div>
       <p class="mt-6 text-center text-sm text-cream/70">
         Envie de conseils concrets ?

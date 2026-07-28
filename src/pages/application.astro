@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE, PROGRAMS } from '../config/site';
+import { SITE, PROGRAMS, ATHLETIK_HUB_URL } from '../config/site';
 import appHero from '../assets/app-hero.jpg';
 
 const schema = {
@@ -45,8 +45,8 @@ const features = [
         vidéos. Tout dans ta poche.
       </p>
       <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-        <a href="/livre" class="btn-gold">Découvrir le livre pour accéder à l'expérience complète →</a>
-        <a href="#fonctionnement" class="btn-outline">Voir comment ça marche →</a>
+        <a href={ATHLETIK_HUB_URL} target="_blank" rel="noopener noreferrer" class="btn-gold">Accéder à l'application →</a>
+        <a href="/livre" class="btn-outline">Découvrir le livre →</a>
       </div>
     </div>
 
@@ -152,9 +152,9 @@ const features = [
         commence par le livre.
       </p>
       <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <a href="/livre" class="btn-gold">Découvrir le livre →</a>
-        <a href="/bilan" class="btn-outline !border-navy !text-navy hover:!bg-navy hover:!text-cream">
-          Réserver un bilan →
+        <a href={ATHLETIK_HUB_URL} target="_blank" rel="noopener noreferrer" class="btn-gold">Accéder à l'application →</a>
+        <a href="/livre" class="btn-outline !border-navy !text-navy hover:!bg-navy hover:!text-cream">
+          Découvrir le livre →
         </a>
       </div>
       <p class="mt-8 text-sm text-navy/60">

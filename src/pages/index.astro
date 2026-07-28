@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
-import { SITE, BOOK, SOCIALS } from '../config/site';
+import { SITE, BOOK, SOCIALS, ATHLETIK_HUB_URL } from '../config/site';
 import courtNight from '../assets/court-night.jpg';
 import squatDay from '../assets/squat-day.jpg';
 import appLivreApp from '../assets/app-livre-app.jpg';
@@ -190,7 +190,7 @@ const schema = [
         </ul>
         <div class="mt-9 flex flex-col gap-3 sm:flex-row">
           <a href="/livre" class="btn-gold">Découvrir le livre →</a>
-          <a href="/application" class="btn-outline">Voir Athletik Hub →</a>
+          <a href={ATHLETIK_HUB_URL} target="_blank" rel="noopener noreferrer" class="btn-outline">Accéder à Athletik Hub →</a>
         </div>
       </div>
 
