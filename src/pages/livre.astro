@@ -119,6 +119,17 @@ const faqSchema = {
           Non. Le problème, c'est que tu travailles <strong class="text-white">sans système</strong>.
           Et sans système, même les meilleurs exercices donnent des résultats aléatoires.
         </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href={BOOK.amazon} target="_blank" rel="noopener noreferrer" class="btn-gold">
+            Acheter sur Amazon →
+          </a>
+          <a href="#programmes" class="btn-outline">Voir les 6 programmes →</a>
+        </div>
+        <p class="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-cream/50">
+          <span>✓ Kindle {BOOK.priceKindle} · accès immédiat</span>
+          <span>✓ Papier {BOOK.pricePaper} · livraison internationale</span>
+          <span>✓ Athletik Hub inclus</span>
+        </p>
       </div>
       <div>
         <Image
@@ -457,4 +468,34 @@ const faqSchema = {
       </p>
     </div>
   </section>
+
+  <!-- ===================== STICKY BUY BAR (mobile) ===================== -->
+  <div
+    id="sticky-buy"
+    class="fixed bottom-0 inset-x-0 z-50 hidden border-t border-gold/20 bg-navy/97 px-4 py-3 backdrop-blur-md sm:hidden"
+  >
+    <div class="flex items-center justify-between gap-3">
+      <div>
+        <p class="text-xs font-semibold text-cream/80">Les Secrets de la Détente Verticale</p>
+        <p class="text-sm text-gold">
+          Kindle {BOOK.priceKindle} <span class="text-cream/40">·</span> Papier {BOOK.pricePaper}
+        </p>
+      </div>
+      <a href={BOOK.amazon} target="_blank" rel="noopener noreferrer" class="btn-gold !px-5 !py-2.5 shrink-0 text-sm">
+        Acheter →
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const bar = document.getElementById('sticky-buy');
+    const hero = document.querySelector('section');
+    if (bar && hero) {
+      const obs = new IntersectionObserver(
+        ([e]) => bar.classList.toggle('hidden', e.isIntersecting),
+        { threshold: 0 },
+      );
+      obs.observe(hero);
+    }
+  </script>
 </BaseLayout>

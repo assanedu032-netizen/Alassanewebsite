@@ -127,6 +127,31 @@
   }
 }
 
+/* Ancres décalées pour compenser la navbar sticky (h-[4.5rem] = 72px) */
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+/* Styles de contenu riche (articles de blog, mentions légales) */
+.prose {
+  @apply text-navy/80 leading-relaxed;
+  h1, h2, h3, h4 { @apply text-navy mt-10 mb-4; }
+  h2 { @apply text-2xl; }
+  h3 { @apply text-xl; }
+  p { @apply mb-4; }
+  ul, ol { @apply mb-4 ml-5; }
+  ul { @apply list-disc; }
+  ol { @apply list-decimal; }
+  li { @apply mb-1.5; }
+  strong { @apply text-navy font-semibold; }
+  em { @apply italic; }
+  a { @apply text-gold-dark underline hover:text-gold; }
+  blockquote { @apply border-l-4 border-gold pl-5 italic text-navy/70 my-6; }
+  hr { @apply border-navy/12 my-8; }
+  img { @apply rounded-xl my-6 w-full; }
+  code { @apply bg-cream rounded px-1.5 py-0.5 text-sm font-mono text-navy; }
+}
+
 /* Animations d'apparition au scroll (opt-in via classe) */
 @media (prefers-reduced-motion: no-preference) {
   .fade-up {
