@@ -125,12 +125,7 @@ const schema = [
         <h2 class="text-3xl font-bold text-navy sm:text-4xl">
           Tu travailles dur. Ta détente, elle bouge pas.
         </h2>
-        <p class="mt-5 text-navy/70">
-          Tu regardes des vidéos. Tu essaies un programme. Deux semaines. Rien. Tu en
-          cherches un autre. Même résultat. Et une pensée s'installe :
-          <em class="text-navy/90">« C'est peut-être ma génétique. C'est peut-être pas pour moi. »</em>
-        </p>
-        <p class="mt-3 text-lg font-semibold text-navy">Non. Le problème, c'est autre chose.</p>
+        <p class="mt-5 text-lg font-semibold text-navy">Le problème, c'est autre chose.</p>
       </div>
 
       <div class="mt-14 grid gap-8 md:grid-cols-3">
@@ -139,17 +134,17 @@ const schema = [
             {
               n: '1',
               title: "Tu empiles des exercices sans comprendre ce que tu développes.",
-              body: "Squats, sauts, élastiques, pliométrie — dans le désordre. Sans logique de périodisation, tu travailles fort pour des résultats aléatoires.",
+              body: "Sans logique de périodisation, tu travailles fort pour des résultats aléatoires.",
             },
             {
               n: '2',
               title: "Ton corps s'adapte. Et tu t'en rends pas compte.",
-              body: "Après 3 à 4 semaines, il a intégré le stimulus. Il s'y est habitué. Il n'a plus aucune raison de progresser. C'est de la biologie — pas de la flemme.",
+              body: "Après 3-4 semaines, il n'a plus aucune raison de progresser. C'est de la biologie.",
             },
             {
               n: '3',
               title: 'Tu mesures pas ce qui compte vraiment.',
-              body: "Pas juste ta hauteur de saut — ta force explosive, ta triple extension, ton indice de réactivité. Ce que tu mesures pas, tu peux pas l'améliorer.",
+              body: "Ce que tu mesures pas, tu peux pas l'améliorer.",
             },
           ].map((item) => (
             <div class="card bg-cream/40">
@@ -164,10 +159,7 @@ const schema = [
       </div>
 
       <div class="mt-14 text-center">
-        <p class="text-navy/70">
-          Ces 3 points, c'est la base de tout ce que tu trouveras dans le livre.
-        </p>
-        <a href="/livre" class="btn-gold mt-6">Voir le système complet →</a>
+        <a href="/livre" class="btn-gold">Voir le système complet →</a>
       </div>
     </div>
   </section>
@@ -180,26 +172,9 @@ const schema = [
         <h2 class="text-3xl font-bold sm:text-4xl">
           Un livre. Une app. Un seul système.
         </h2>
-        <p class="mt-6 leading-relaxed text-cream/80">
-          Pas deux produits séparés — un écosystème pensé ensemble. Le livre te donne la
-          compréhension. Athletik Hub te donne le cadre pour agir chaque jour.
+        <p class="mt-6 text-lg text-cream/85">
+          {BOOK.pages} pages · {BOOK.programs} programmes · Athletik Hub inclus.
         </p>
-        <ul class="mt-8 space-y-4">
-          {
-            [
-              `${BOOK.pages} pages de science vulgarisée, de méthodes et de programmes.`,
-              `Athletik Hub — tracker ta progression séance par séance, accéder aux vidéos, faire tes tests.`,
-              `${BOOK.programs} programmes identifiés selon ton profil via le Bilan Athletic gratuit.`,
-            ].map((line) => (
-              <li class="flex items-start gap-3">
-                <svg class="mt-0.5 h-6 w-6 flex-none text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
-                </svg>
-                <span class="text-cream/90">{line}</span>
-              </li>
-            ))
-          }
-        </ul>
         <div class="mt-9 flex flex-col gap-3 sm:flex-row">
           <a href="/livre" class="btn-gold">Découvrir le livre →</a>
           <a href={ATHLETIK_HUB_URL} target="_blank" rel="noopener noreferrer" class="btn-outline">Accéder à Athletik Hub →</a>
@@ -245,20 +220,7 @@ const schema = [
           14 ans. Moins d'1m60. Recalé à la détection de Nanterre.
         </h2>
         <p class="mt-6 leading-relaxed text-navy/75">
-          On m'a dit que j'avais pas le profil. Je suis rentré chez moi en pleurant de rage.
-          Alors j'ai décidé de construire le mien.
-        </p>
-        <p class="mt-4 leading-relaxed text-navy/75">
-          4 ans d'entraînement. Des blessures. Plus de 10 000 € investis en formations.
-          Un déplacement aux États-Unis pour me former en privé avec des coachs NBA et NFL.
-          Certification ISSA. 900+ athlètes ensuite.
-        </p>
-        <p class="mt-4 leading-relaxed text-navy/75">
-          Résultat : <strong class="text-navy">56 cm → 88 cm.</strong> +32 cm. En partant de rien.
-        </p>
-        <p class="mt-5 text-navy/70">
-          Ce livre, c'est ce que j'aurais voulu avoir à 14 ans — pour éviter les erreurs,
-          le temps perdu, et les 10 000 € brûlés.
+          Résultat : <strong class="text-navy">56 cm → 88 cm.</strong> Ce livre, c'est ce que j'aurais voulu avoir à 14 ans.
         </p>
         <a href="/a-propos" class="btn-outline mt-8 !border-navy !text-navy hover:!bg-navy hover:!text-cream">
           Mon histoire complète →
