@@ -1,0 +1,171 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, PROGRAMS, ATHLETIK_HUB_URL } from '../config/site';
+import appHero from '../assets/app-hero.jpg';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Athletik Hub',
+  applicationCategory: 'SportsApplication',
+  inLanguage: 'fr',
+  url: `${SITE.url}/application`,
+  description:
+    "Application de coaching qui accompagne les lecteurs du livre Les Secrets de la Détente Verticale avec des programmes, des tests et un suivi pour développer la détente verticale et l'explosivité.",
+};
+
+const features = [
+  { title: 'Suivi des séances', body: 'Tu sais toujours où tu en es. Chaque séance trackée, chaque effort compte.' },
+  { title: 'Progression en temps réel', body: 'Tu vois ton évolution semaine après semaine — pas juste tes sensations.' },
+  { title: 'Vidéos de chaque exercice', body: 'Tu exécutes proprement, avec la technique sous les yeux à chaque répétition.' },
+  { title: 'Tests physiques & mesures', body: 'Tu mesures ce qui compte vraiment. Ce que tu mesures, tu peux l\'améliorer.' },
+  { title: '6 programmes prêts à l\'emploi', body: 'Le bon plan selon ton profil — identifié via le Bilan Athletic gratuit.' },
+  { title: 'Conçue pour les lecteurs', body: 'L\'app prolonge le livre : la théorie devient un accompagnement concret, séance par séance.' },
+];
+---
+
+<BaseLayout
+  title="Athletik Hub — L'application de coaching détente verticale incluse avec le livre"
+  description="Suivi des séances, progression en temps réel, vidéos d'exercices, tests physiques. Athletik Hub transforme le livre en coaching personnalisé. Inclus avec Les Secrets de la Détente Verticale."
+  appendBrand={false}
+  ogImage="/athletikhub-og.jpg"
+  schema={schema}
+>
+  <!-- ===================== HERO ===================== -->
+  <section class="bg-navy pt-20 pb-24 text-white">
+    <div class="container-site max-w-3xl">
+      <p class="eyebrow">L'application incluse avec le livre</p>
+      <h1 class="display-section">
+        Athletik Hub. Le livre en action.
+      </h1>
+      <p class="mt-6 text-lg leading-relaxed text-cream/85">
+        La plupart des livres de sport t'arrêtent à la page. Athletik Hub, c'est le
+        prolongement concret de la méthode — les programmes, les tests, le suivi, les
+        vidéos. Tout dans ta poche.
+      </p>
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+        <a href={ATHLETIK_HUB_URL} target="_blank" rel="noopener noreferrer" class="btn-gold">Accéder à l'application →</a>
+        <a href="/livre" class="btn-outline">Découvrir le livre →</a>
+      </div>
+      <p class="mt-4 text-sm text-cream/55">
+        ✓ Inclus avec le livre · ✓ 6 programmes · ✓ Accès immédiat
+      </p>
+    </div>
+
+    <div class="container-site mt-14">
+      <figure class="relative overflow-hidden rounded-2xl shadow-xl shadow-black/30 ring-1 ring-gold/15">
+        <Image
+          src={appHero}
+          alt="Athletik Hub : aperçu de l'application — programme Vertical Dunk, profil et progression"
+          class="block w-full"
+          widths={[640, 1024, 1456]}
+          sizes="(max-width: 1400px) 100vw, 1400px"
+          loading="eager"
+        />
+        <div class="pointer-events-none absolute inset-0 bg-navy mix-blend-lighten"></div>
+        <div class="pointer-events-none absolute inset-0 bg-navy/12"></div>
+        <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy via-navy/50 to-transparent"></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== CE QUE FAIT L'APP ===================== -->
+  <section class="section-padding bg-white">
+    <div class="container-site">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow">Ce que fait Athletik Hub</p>
+        <h2 class="text-3xl font-bold text-navy sm:text-4xl">Tout ton entraînement, dans ta poche.</h2>
+      </div>
+      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          features.map((f) => (
+            <div class="card bg-cream/40">
+              <h3 class="text-lg font-bold text-navy">{f.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-navy/70">{f.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LES 6 PROGRAMMES ===================== -->
+  <section class="section-padding bg-navy text-white">
+    <div class="container-site">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow">Dans l'application</p>
+        <h2 class="text-3xl font-bold sm:text-4xl">6 programmes. Le tien est là-dedans.</h2>
+        <p class="mt-4 text-cream/80">
+          Tu fais le Bilan Athletic → le bon programme s'identifie → tu suis.
+        </p>
+      </div>
+      <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          PROGRAMS.map((prog) => (
+            <div class="card-dark">
+              <h3 class="font-[var(--font-heading)] text-xl font-bold text-gold">{prog.name}</h3>
+              <p class="mt-2 text-sm text-cream/80">{prog.tagline}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="mt-12 text-center">
+        <a href="/bilan" class="btn-gold">Trouver mon programme →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COMMENT ÇA MARCHE ===================== -->
+  <section id="fonctionnement" class="section-padding bg-cream">
+    <div class="container-site">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow">Comment ça marche</p>
+        <h2 class="text-3xl font-bold text-navy sm:text-4xl">Du livre au coaching, en 4 étapes.</h2>
+      </div>
+      <div class="mt-14 grid gap-6 md:grid-cols-4">
+        {
+          [
+            { n: '1', t: 'Tu prends le livre', b: 'Athletik Hub est inclus avec Les Secrets de la Détente Verticale.' },
+            { n: '2', t: 'Tu fais le Bilan Athletic', b: 'Tu évalues ton niveau, ta force, ta mobilité et tes objectifs.' },
+            { n: '3', t: 'Ton programme s\'identifie', b: 'Le bon plan parmi les 6 est sélectionné selon ton profil.' },
+            { n: '4', t: 'Tu suis et tu mesures', b: 'Séances, vidéos, tests : tu progresses avec un cadre. Tu sais toujours ce que tu développes et pourquoi.' },
+          ].map((s) => (
+            <div class="card">
+              <span class="flex h-12 w-12 items-center justify-center rounded-full bg-navy font-[var(--font-heading)] text-xl italic text-gold">
+                {s.n}
+              </span>
+              <h3 class="mt-5 text-lg font-bold text-navy">{s.t}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-navy/70">{s.b}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA FINAL ===================== -->
+  <section class="section-padding bg-white">
+    <div class="container-site max-w-3xl text-center">
+      <h2 class="text-3xl font-bold text-navy sm:text-4xl">
+        Le livre est la porte d'entrée d'Athletik Hub.
+      </h2>
+      <p class="mt-5 text-lg text-navy/70">
+        L'application accompagne les lecteurs. Pour accéder à l'expérience complète,
+        commence par le livre.
+      </p>
+      <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href={ATHLETIK_HUB_URL} target="_blank" rel="noopener noreferrer" class="btn-gold">Accéder à l'application →</a>
+        <a href="/livre" class="btn-outline !border-navy !text-navy hover:!bg-navy hover:!text-cream">
+          Découvrir le livre →
+        </a>
+      </div>
+      <p class="mt-8 text-sm text-navy/60">
+        Envie d'en savoir plus sur ma méthode ?
+        <a href="/a-propos" class="font-semibold text-gold-dark underline">Mon parcours</a>
+        ·
+        <a href="/blog" class="font-semibold text-gold-dark underline">le blog détente verticale</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

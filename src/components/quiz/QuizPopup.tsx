@@ -137,6 +137,9 @@ export default function QuizPopup() {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [result, setResult] = useState<ProgramId | null>(null);
+  // Programme calculé, en attente de l'email avant révélation (lead magnet).
+  const [pendingResult, setPendingResult] = useState<ProgramId | null>(null);
+  const [email, setEmail] = useState('');
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -176,14 +179,39 @@ export default function QuizPopup() {
     if (step < QUESTIONS.length - 1) {
       setStep(step + 1);
     } else {
-      setResult(recommend(next));
+      // Dernière question : on calcule le programme mais on demande l'email avant.
+      setPendingResult(recommend(next));
     }
+  }
+
+  // Capture du lead via Netlify Forms (fire-and-forget), puis on révèle le programme.
+  function submitEmail() {
+    if (!pendingResult) return;
+    try {
+      const body = new URLSearchParams({
+        'form-name': 'quiz-lead',
+        email,
+        programme: PROGRAMS[pendingResult].name,
+        objectif: answers.objectif ?? '',
+        niveau: answers.niveau ?? '',
+      });
+      void fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
+      }).catch(() => {});
+    } catch {
+      /* on ne bloque jamais l'affichage du résultat */
+    }
+    setResult(pendingResult);
   }
 
   function restart() {
     setStep(0);
     setAnswers({});
     setResult(null);
+    setPendingResult(null);
+    setEmail('');
   }
 
   // Fermeture clavier (Échap)
@@ -199,7 +227,8 @@ export default function QuizPopup() {
   if (!open) return null;
 
   const program = result ? PROGRAMS[result] : null;
-  const progress = result ? 100 : (step / QUESTIONS.length) * 100;
+  const progress = result ? 100 : pendingResult ? 92 : (step / QUESTIONS.length) * 100;
+  const emailValid = /.+@.+\..+/.test(email);
 
   return (
     <div
@@ -233,7 +262,7 @@ export default function QuizPopup() {
           <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
             Athletik Hub
           </p>
-          <h2 id="quiz-title" className="pr-8 font-serif text-xl font-bold" style={{ fontFamily: 'Georgia, serif' }}>
+          <h2 id="quiz-title" className="pr-8 font-serif text-xl font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
             {result ? 'Ton programme recommandé' : 'Quel programme est vraiment fait pour toi ?'}
           </h2>
           {/* Barre de progression */}
@@ -247,7 +276,7 @@ export default function QuizPopup() {
 
         {/* Corps */}
         <div className="px-6 py-6">
-          {!result && step === 0 && (
+          {!result && !pendingResult && step === 0 && (
             <p className="mb-5 text-sm leading-relaxed text-navy/70">
               Tu veux améliorer ta détente, ton explosivité ou ton niveau athlétique,
               mais tu ne sais pas par où commencer ? Réponds à 3 questions rapides. À la
@@ -256,14 +285,61 @@ export default function QuizPopup() {
             </p>
           )}
 
-          {!result && (
+          {/* Étape email — capture du prospect avant de révéler le programme. */}
+          {!result && pendingResult && (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                submitEmail();
+              }}
+              className="text-center"
+            >
+              <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-gold/15 ring-1 ring-gold/40">
+                <svg className="h-6 w-6 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-bold text-navy" style={{ fontFamily: 'var(--font-heading)' }}>
+                Ton programme est prêt.
+              </h3>
+              <p className="mx-auto mt-2 max-w-sm text-sm text-navy/70">
+                Laisse ton email pour découvrir ton programme et recevoir ton accès à
+                <strong className="text-navy"> 3 jours gratuits</strong> + mes conseils détente verticale.
+              </p>
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="ton@email.com"
+                className="mt-4 w-full rounded-full border border-navy/15 px-5 py-3 text-navy placeholder:text-navy/40 focus:border-gold focus:outline-none"
+              />
+              <button
+                type="submit"
+                disabled={!emailValid}
+                className="btn-gold mt-3 w-full disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Voir mon programme →
+              </button>
+              <button
+                type="button"
+                onClick={() => setResult(pendingResult)}
+                className="mt-3 block w-full text-xs text-navy/45 transition-colors hover:text-navy"
+              >
+                Voir sans laisser d'email
+              </button>
+              <p className="mt-2 text-[11px] text-navy/40">Pas de spam. Désinscription en un clic.</p>
+            </form>
+          )}
+
+          {!result && !pendingResult && (
             <div>
               <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-gold">
                 Question {step + 1} / {QUESTIONS.length}
               </p>
               <h3
                 className="mb-4 text-lg font-bold text-navy"
-                style={{ fontFamily: 'Georgia, serif' }}
+                style={{ fontFamily: 'var(--font-heading)' }}
               >
                 {QUESTIONS[step].question}
               </h3>
@@ -304,7 +380,7 @@ export default function QuizPopup() {
                 </svg>
               </div>
               <p className="text-sm text-navy/60">Ton profil correspond à</p>
-              <h3 className="mt-1 text-2xl font-bold text-navy" style={{ fontFamily: 'Georgia, serif' }}>
+              <h3 className="mt-1 text-2xl font-bold text-navy" style={{ fontFamily: 'var(--font-heading)' }}>
                 {program.name}
               </h3>
               <p className="mt-1 text-sm font-medium text-gold-dark">{program.tagline}</p>
@@ -324,7 +400,7 @@ export default function QuizPopup() {
             </div>
           )}
 
-          {!result && (
+          {!result && !pendingResult && (
             <button
               type="button"
               onClick={dismiss}

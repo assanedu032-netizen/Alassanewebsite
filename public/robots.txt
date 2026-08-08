@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alassane-coaching.netlify.app/sitemap-index.xml
+Sitemap: https://alassanecoaching.com/sitemap-index.xml
