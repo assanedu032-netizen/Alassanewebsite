@@ -69,11 +69,6 @@ const schema = [
             Réserver mon bilan gratuit →
           </a>
         </div>
-        <div class="mt-5 flex justify-center gap-5 text-xs text-cream/50">
-          <span>✓ Athletik Hub inclus</span>
-          <span>✓ Paiement sécurisé Amazon</span>
-          <span>✓ Accès immédiat Kindle</span>
-        </div>
       </div>
     </div>
 
@@ -113,53 +108,6 @@ const schema = [
             <p class="mt-1 text-xs uppercase tracking-[0.18em] text-white/90">de terrain condensés dans un système</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== PROBLÈME ===================== -->
-  <section class="section-padding bg-white">
-    <div class="container-site">
-      <div class="mx-auto max-w-3xl text-center">
-        <p class="eyebrow">La vraie raison</p>
-        <h2 class="text-3xl font-bold text-navy sm:text-4xl">
-          Tu travailles dur. Ta détente, elle bouge pas.
-        </h2>
-        <p class="mt-5 text-lg font-semibold text-navy">Le problème, c'est autre chose.</p>
-      </div>
-
-      <div class="mt-14 grid gap-8 md:grid-cols-3">
-        {
-          [
-            {
-              n: '1',
-              title: "Tu empiles des exercices sans comprendre ce que tu développes.",
-              body: "Sans logique de périodisation, tu travailles fort pour des résultats aléatoires.",
-            },
-            {
-              n: '2',
-              title: "Ton corps s'adapte. Et tu t'en rends pas compte.",
-              body: "Après 3-4 semaines, il n'a plus aucune raison de progresser. C'est de la biologie.",
-            },
-            {
-              n: '3',
-              title: 'Tu mesures pas ce qui compte vraiment.',
-              body: "Ce que tu mesures pas, tu peux pas l'améliorer.",
-            },
-          ].map((item) => (
-            <div class="card bg-cream/40">
-              <span class="flex h-12 w-12 items-center justify-center rounded-full bg-navy font-[var(--font-heading)] text-xl font-bold text-gold">
-                {item.n}
-              </span>
-              <h3 class="mt-5 text-lg font-bold text-navy">{item.title}</h3>
-              <p class="mt-3 text-sm leading-relaxed text-navy/70">{item.body}</p>
-            </div>
-          ))
-        }
-      </div>
-
-      <div class="mt-14 text-center">
-        <a href="/livre" class="btn-gold">Voir le système complet →</a>
       </div>
     </div>
   </section>
