@@ -139,16 +139,6 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- ===================== VISION ===================== -->
-  <section class="section-padding bg-cream">
-    <div class="container-site max-w-3xl">
-      <h2 class="text-3xl font-bold text-navy sm:text-4xl">Imagine ça.</h2>
-      <p class="mt-6 text-xl font-semibold text-navy">
-        Ce n'est pas un rêve. C'est ce qui arrive quand tu suis un système structuré.
-      </p>
-    </div>
-  </section>
-
   <!-- ===================== PRÉSENTATION PRODUIT ===================== -->
   <section class="section-padding bg-white">
     <div class="container-site grid items-center gap-14 lg:grid-cols-2">
@@ -310,51 +300,6 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- ===================== POUR QUI / PAS POUR QUI ===================== -->
-  <section class="section-padding bg-cream">
-    <div class="container-site grid gap-8 lg:grid-cols-2">
-      <div class="rounded-2xl border border-gold/30 bg-white p-9 shadow-sm">
-        <h3 class="text-xl font-bold text-navy">Ce livre est fait pour toi si…</h3>
-        <ul class="mt-6 space-y-4">
-          {
-            [
-              'tu veux dunker et tu sais pas par où commencer',
-              'tu stagnes depuis trop longtemps malgré tes efforts',
-              "tu veux comprendre la science de l'explosivité, pas juste exécuter des exercices",
-              'tu es coach, prépa physique, étudiant STAPS ou BPJEPS',
-              'tu en as marre des programmes qui ne mènent nulle part',
-            ].map((item) => (
-              <li class="flex items-start gap-3 text-sm text-navy/80">
-                <svg class="mt-0.5 h-5 w-5 flex-none text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
-                </svg>
-                {item}
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <div class="rounded-2xl border border-white/10 bg-navy p-9 text-white shadow-sm">
-        <h3 class="text-xl font-bold">Ce livre n'est PAS fait pour toi si…</h3>
-        <ul class="mt-6 space-y-4">
-          {
-            [
-              'tu cherches un programme miracle en 2 semaines',
-              "tu n'es pas prêt à t'investir sur la durée",
-            ].map((item) => (
-              <li class="flex items-start gap-3 text-sm text-cream/85">
-                <svg class="mt-0.5 h-5 w-5 flex-none text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
-                {item}
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </div>
-  </section>
-
   <!-- ===================== FAQ ===================== -->
   <section class="section-padding bg-white">
     <div class="container-site max-w-3xl">
@@ -381,34 +326,6 @@ const faqSchema = {
         Une autre question ?
         <a href="/contact" class="font-semibold text-gold-dark underline">Écris-moi</a> — je réponds sous 24-48h.
       </p>
-    </div>
-  </section>
-
-  <!-- ===================== BLOG APERÇU ===================== -->
-  <section class="section-padding bg-cream">
-    <div class="container-site">
-      <div class="mx-auto max-w-2xl text-center">
-        <p class="eyebrow">Sur le blog</p>
-        <h2 class="text-3xl font-bold text-navy sm:text-4xl">Commence à apprendre. Gratuitement.</h2>
-        <p class="mt-4 text-navy/70">
-          Des articles concrets sur la détente verticale — un bon point de départ avant le livre.
-        </p>
-      </div>
-      <div class="mt-12 grid gap-5 sm:grid-cols-3">
-        {
-          [
-            { href: '/blog/triple-extension-detente-verticale', cat: 'Science', title: 'La triple extension : la clé de ta détente verticale' },
-            { href: '/blog/comment-ameliorer-sa-detente-verticale', cat: 'Entraînement', title: 'Comment améliorer sa détente au basketball' },
-            { href: '/blog/programme-detente-verticale-debutant', cat: 'Entraînement', title: 'Programme détente verticale débutant : par où commencer' },
-          ].map((a) => (
-            <a href={a.href} class="group card !p-6">
-              <span class="text-xs font-semibold uppercase tracking-wide text-gold">{a.cat}</span>
-              <h3 class="mt-2 text-lg font-bold text-navy group-hover:text-gold-dark transition-colors duration-300">{a.title}</h3>
-              <span class="mt-4 inline-block text-sm font-semibold text-gold-dark">Lire l'article →</span>
-            </a>
-          ))
-        }
-      </div>
     </div>
   </section>
 
